@@ -8,7 +8,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "confii"
-version = "0.0.1"
+dynamic = ["version"]
 description = "A flexible configuration management library for Python applications"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -115,6 +115,9 @@ confii = "confii.cli:cli"
 # =============================================================================
 # Hatch build configuration
 # =============================================================================
+
+[tool.hatch.version]
+path = "src/confii/VERSION"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/confii"]

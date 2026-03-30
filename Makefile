@@ -1,4 +1,4 @@
-.PHONY: help install install-dev clean test test-cov test-fast lint format type-check security pre-commit docs build publish dev-setup check-all
+.PHONY: help install install-dev clean test test-cov test-fast lint format type-check security pre-commit docs build publish dev-setup check-all version-calc version-set version-dev version-check version-validate release-tag
 
 # Variables
 PYTHON := python3
@@ -244,7 +244,7 @@ docker-test: ## Run tests in Docker container
 	docker run --rm $(PROJECT_NAME):latest pytest
 
 # Utility targets
-version: ## Display current package version
+version: ## Display current package version (CalVer YYYY.MM.DD.MICRO)
 	@$(PYTHON) -c "from $(PROJECT_NAME) import __version__; print(__version__)"
 
 info: ## Display project information
@@ -282,25 +282,58 @@ debug-shell: ## Start an IPython shell with the package loaded
 	@command -v ipython >/dev/null 2>&1 || (echo "$(RED)Please install ipython: pip install ipython$(NC)" && exit 1)
 	ipython -i -c "from $(PROJECT_NAME) import *; print('$(GREEN)Confii loaded. Available: Config$(NC)')"
 
-# Release targets
-changelog: ## Generate/update CHANGELOG.md
-	@echo "$(YELLOW)Generating changelog...$(NC)"
-	@echo "# Changelog\n" > CHANGELOG.md
-	@echo "## [Unreleased]\n" >> CHANGELOG.md
-	@git log --pretty=format:"- %s (%h)" --reverse >> CHANGELOG.md
-	@echo "\n$(GREEN)✓ CHANGELOG.md updated$(NC)"
+# CalVer version targets
+SCRIPTS_DIR := scripts
+VERSION_FILE := $(SRC_DIR)/VERSION
 
-release-patch: ## Create a patch release (x.x.+1)
-	hatch version patch
-	git push && git push --tags
+version-calc: ## Calculate next CalVer version
+	@echo "$(YELLOW)Calculating next CalVer version...$(NC)"
+	@$(PYTHON) $(SCRIPTS_DIR)/calc_version.py --validate --pep440
 
-release-minor: ## Create a minor release (x.+1.0)
-	hatch version minor
-	git push && git push --tags
+version-set: ## Write next CalVer version to VERSION file
+	@echo "$(YELLOW)Setting next CalVer version...$(NC)"
+	@$(PYTHON) $(SCRIPTS_DIR)/calc_version.py --validate --pep440 --set
 
-release-major: ## Create a major release (+1.0.0)
-	hatch version major
-	git push && git push --tags
+version-dev: ## Write dev version for local development
+	@echo "$(YELLOW)Setting CalVer dev version...$(NC)"
+	@$(PYTHON) $(SCRIPTS_DIR)/calc_version.py --validate --pep440 --set-dev
+
+version-check: ## Check current version
+	@echo "$(YELLOW)Current version:$(NC)"
+	@cat $(VERSION_FILE) 2>/dev/null || echo "No VERSION file found"
+	@$(PYTHON) -c "from $(PROJECT_NAME) import __version__; print(f'Package reports: {__version__}')" 2>/dev/null || true
+
+version-validate: ## Validate a version string (usage: make version-validate VERSION=2026.03.30.1)
+	@if [ -z "$(VERSION)" ]; then \
+		echo "$(RED)Error: VERSION variable required. Usage: make version-validate VERSION=2026.03.30.1$(NC)"; \
+		exit 1; \
+	fi
+	@echo "Validating version: $(VERSION)"
+	@$(PYTHON) -c "from confii.calver import validate_version_format; print('Valid' if validate_version_format('$(VERSION)') else 'Invalid')"
+
+release-tag: ## Interactive CalVer tag creation and push
+	@echo "$(YELLOW)Creating release tag...$(NC)"
+	@VERSION=$$($(PYTHON) $(SCRIPTS_DIR)/calc_version.py); \
+	echo "Next version: $$VERSION"; \
+	read -p "Create and push tag v$$VERSION? (y/N) " -n 1 -r; \
+	echo; \
+	if [[ $$REPLY =~ ^[Yy]$$ ]]; then \
+		$(PYTHON) $(SCRIPTS_DIR)/calc_version.py --validate --pep440 --set; \
+		git add $(VERSION_FILE); \
+		git commit -m "chore: set version to $$VERSION"; \
+		git tag -a "v$$VERSION" -m "Release $$VERSION"; \
+		echo "$(GREEN)Created tag: v$$VERSION$(NC)"; \
+		read -p "Push tag to remote? (y/N) " -n 1 -r; \
+		echo; \
+		if [[ $$REPLY =~ ^[Yy]$$ ]]; then \
+			git push origin HEAD "v$$VERSION"; \
+			echo "$(GREEN)Pushed tag: v$$VERSION$(NC)"; \
+		else \
+			echo "Tag created locally. Push with: git push origin v$$VERSION"; \
+		fi; \
+	else \
+		echo "Cancelled"; \
+	fi
 
 # Advanced targets
 complexity: ## Check code complexity

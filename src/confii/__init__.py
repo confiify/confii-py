@@ -38,7 +38,7 @@ except ImportError:
     AsyncYamlLoader = None  # type: ignore
     AsyncHTTPLoader = None  # type: ignore
 
-__version__ = "0.0.1"
+from confii.__about__ import __version__
 __all__ = [
     "Config",
     "ConfigAccessError",
