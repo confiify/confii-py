@@ -1,0 +1,20 @@
+{
+  "include": ["src", "tests"],
+  "exclude": ["examples"],
+  "pythonVersion": "3.9",
+  "typeCheckingMode": "standard",
+  "reportMissingImports": "warning",
+  "reportMissingModuleSource": "warning",
+  "executionEnvironments": [
+    {
+      "root": "tests",
+      "reportOptionalSubscript": false,
+      "reportOptionalMemberAccess": false,
+      "reportArgumentType": false,
+      "reportPossiblyUnboundVariable": false,
+      "reportAttributeAccessIssue": false,
+      "reportCallIssue": false,
+      "reportMissingImports": false
+    }
+  ]
+}

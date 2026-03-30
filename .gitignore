@@ -1,0 +1,257 @@
+# ============================================================================
+# Python bytecode & compilation
+# ============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ============================================================================
+# Distribution & packaging
+# ============================================================================
+dist/
+build/
+eggs/
+wheels/
+*.egg
+*.egg-info/
+*.dist-info/
+pip-wheel-metadata/
+.installed.cfg
+
+# ============================================================================
+# Virtual environments
+# ============================================================================
+.venv/
+venv/
+env/
+ENV/
+
+# ============================================================================
+# Installer & pip logs
+# ============================================================================
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ============================================================================
+# Testing & coverage
+# ============================================================================
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+.hypothesis/
+.coverage
+.coverage.*
+coverage.xml
+nosetests.xml
+coverage/
+*.cover
+*.py,cover
+
+# ============================================================================
+# Type checkers & linters
+# ============================================================================
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyright/
+.ruff_cache/
+pyright_errors
+
+# ============================================================================
+# Documentation builds
+# ============================================================================
+docs/_build/
+docs/.doctrees/
+docsrc/_build/
+/site
+
+# ============================================================================
+# IDEs & editors
+# ============================================================================
+.idea/
+.vscode/
+.history/
+*.iml
+*.iws
+*.ipr
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# ============================================================================
+# AI assistants
+# ============================================================================
+.claude/
+.gemini/
+.cursor/
+.copilot/
+.codeium/
+.aider*
+.continue/
+.tabnine/
+.sourcegraph/
+.cody/
+.windsurf/
+.augment/
+.codex/
+
+# ============================================================================
+# OS files
+# ============================================================================
+# macOS
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.fuse_hidden*
+.nfs*
+
+# ============================================================================
+# Secrets & credentials
+# ============================================================================
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Credential & key files
+credentials.json
+*.credentials
+*.key
+*.pem
+*.p12
+*.pfx
+*.cer
+*.crt
+*.ppk
+service-account*.json
+gcp-credentials*.json
+aws-credentials*.json
+azure-credentials*.json
+
+# Secret / token files
+secrets.yaml
+secrets.yml
+secrets.json
+secrets.toml
+*.secrets
+.secrets/
+vault-token
+vault-token.*
+.vault-token
+*.vault-token
+
+# Cloud provider config
+.aws/
+.azure/
+.gcloud/
+.kube/config
+kubeconfig
+kubeconfig.yaml
+
+# HashiCorp Vault
+.vault/
+vault.json
+vault-config.hcl
+
+# SSH keys (should live in ~/.ssh, not in repos)
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+known_hosts
+
+# ============================================================================
+# Temporary & generated files
+# ============================================================================
+*.tmp
+*.bak
+*.backup
+*.old
+*.orig
+*~
+*.log
+*.prof
+*.lprof
+tmp/
+temp/
+.tmp/
+.temp/
+debug.log
+debug-*.log
+
+# ============================================================================
+# Benchmarking
+# ============================================================================
+.benchmarks/
+benchmark-results/
+*.benchmark
+
+# ============================================================================
+# Build tools & package managers
+# ============================================================================
+# Hatch
+.hatch/
+
+# uv
+.uv/
+
+# PDM
+.pdm.toml
+.pdm-python
+__pypackages__/
+
+# pyenv
+.python-version
+
+# Jupyter
+.ipynb_checkpoints
+
+# Translations
+*.mo
+*.pot
+
+# ============================================================================
+# Project-specific
+# ============================================================================
+# confii IDE support (generated)
+.confii/
+*.confii_stubs.pyi
+.confii_stubs.pyi
+
+# Test artifacts (created by tests that write to CWD)
+base.yaml
+base_config.yaml
+override.json
+prod_overrides.yaml
+test_secrets.yaml
+test_credentials.json
+
+# Local config overrides
+config.local.*
+local.config.*
+override.config.*
+*-local.yaml
+*-local.yml
+*-local.json
+*-local.toml
+
+# DevContainer local overrides
+.devcontainer/.env
+.devcontainer/*.local.yml
+.devcontainer/.docker/
+.devcontainer/docker-compose.override.yml
+s
