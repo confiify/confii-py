@@ -1,0 +1,872 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summary &mdash; Confii 2026.3.30.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5349f25f" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=464dce26" />
+
+  
+    <link rel="shortcut icon" href="_static/confii-py-logo.png"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e99dac99"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=fd10adb8"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Migration Guide" href="migration_guide.html" />
+    <link rel="prev" title="Secret Store Integration" href="secret_stores_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1a1a2e" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/confii-py-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#what-is-confii">What is Confii?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#why-confii">Why Confii?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#use-cases">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#key-concepts">Key Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#basic-installation">Basic Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#optional-dependencies">Optional Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#individual-secret-store-dependencies">Individual Secret Store Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#verifying-installation">Verifying Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#multiple-sources">Multiple Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#with-secret-stores">With Secret Stores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#with-schema-validation">With Schema Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#debug-mode">Debug Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#alternative-access-methods">Alternative Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/configuration_sources.html">Configuration Sources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/configuration_sources.html#file-loaders">File Loaders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/configuration_sources.html#environment-variables">Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/configuration_sources.html#cloud-storage">Cloud Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/configuration_sources.html#remote-urls">Remote URLs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/secret_stores.html">Secret Stores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/secret_stores.html#quick-example">Quick Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/validation.html">Schema Validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/validation.html#pydantic-validation">Pydantic Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/validation.html#json-schema-validation">JSON Schema Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/advanced_features.html">Advanced Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/advanced_features.html#configuration-versioning">Configuration Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/advanced_features.html#drift-detection">Drift Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/advanced_features.html#observability">Observability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/advanced_features.html#async-support">Async Support</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#core-classes">Core Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/config.html">Config Class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/config.html#confii.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/config_builder.html">ConfigBuilder</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/config_builder.html#confii.config_builder.ConfigBuilder"><code class="docutils literal notranslate"><span class="pre">ConfigBuilder</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/config_builder.html#confii.config_builder.builder"><code class="docutils literal notranslate"><span class="pre">builder()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#loaders">Loaders</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/loaders.html">Loaders</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders">Configuration Loaders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.loader">Base Loader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.yaml_loader">YAML Loader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.json_loader">JSON Loader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.toml_loader">TOML Loader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.environment_loader">Environment Loader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.remote_loader">Remote Loaders</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#secret-stores">Secret Stores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/secret_stores.html">Secret Stores</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.AWSSecretsManager"><code class="docutils literal notranslate"><span class="pre">AWSSecretsManager</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.AzureKeyVault"><code class="docutils literal notranslate"><span class="pre">AzureKeyVault</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.DictSecretStore"><code class="docutils literal notranslate"><span class="pre">DictSecretStore</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.EnvSecretStore"><code class="docutils literal notranslate"><span class="pre">EnvSecretStore</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.GCPSecretManager"><code class="docutils literal notranslate"><span class="pre">GCPSecretManager</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.HashiCorpVault"><code class="docutils literal notranslate"><span class="pre">HashiCorpVault</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.MultiSecretStore"><code class="docutils literal notranslate"><span class="pre">MultiSecretStore</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.SecretResolver"><code class="docutils literal notranslate"><span class="pre">SecretResolver</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.SecretStore"><code class="docutils literal notranslate"><span class="pre">SecretStore</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#validators">Validators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/validators.html">Validators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/validators.html#available-validators">Available Validators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/validators.html#confii.validators.PydanticValidator"><code class="docutils literal notranslate"><span class="pre">PydanticValidator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/validators.html#confii.validators.SchemaValidator"><code class="docutils literal notranslate"><span class="pre">SchemaValidator</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#advanced-features">Advanced Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/async_config.html">Async Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/async_config.html#confii.async_config.AsyncConfig"><code class="docutils literal notranslate"><span class="pre">AsyncConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/async_config.html#confii.async_config.AsyncHTTPLoader"><code class="docutils literal notranslate"><span class="pre">AsyncHTTPLoader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/async_config.html#confii.async_config.AsyncLoader"><code class="docutils literal notranslate"><span class="pre">AsyncLoader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/async_config.html#confii.async_config.AsyncYamlLoader"><code class="docutils literal notranslate"><span class="pre">AsyncYamlLoader</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/config_diff.html">Configuration Diff</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/config_diff.html#confii.config_diff.ConfigDiff"><code class="docutils literal notranslate"><span class="pre">ConfigDiff</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/config_diff.html#confii.config_diff.ConfigDiffer"><code class="docutils literal notranslate"><span class="pre">ConfigDiffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/config_diff.html#confii.config_diff.ConfigDriftDetector"><code class="docutils literal notranslate"><span class="pre">ConfigDriftDetector</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/config_diff.html#confii.config_diff.DiffType"><code class="docutils literal notranslate"><span class="pre">DiffType</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/config_versioning.html">Configuration Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/config_versioning.html#confii.config_versioning.ConfigVersion"><code class="docutils literal notranslate"><span class="pre">ConfigVersion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/config_versioning.html#confii.config_versioning.ConfigVersionManager"><code class="docutils literal notranslate"><span class="pre">ConfigVersionManager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/observability.html">Observability</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/observability.html#confii.observability.ConfigAccessMetric"><code class="docutils literal notranslate"><span class="pre">ConfigAccessMetric</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/observability.html#confii.observability.ConfigEventEmitter"><code class="docutils literal notranslate"><span class="pre">ConfigEventEmitter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/observability.html#confii.observability.ConfigMetrics"><code class="docutils literal notranslate"><span class="pre">ConfigMetrics</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/observability.html#confii.observability.ConfigObserver"><code class="docutils literal notranslate"><span class="pre">ConfigObserver</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/merge_strategies.html">Merge Strategies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/merge_strategies.html#confii.merge_strategies.AdvancedConfigMerger"><code class="docutils literal notranslate"><span class="pre">AdvancedConfigMerger</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/merge_strategies.html#confii.merge_strategies.MergeStrategy"><code class="docutils literal notranslate"><span class="pre">MergeStrategy</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#utilities">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/introspection.html">Configuration Introspection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/introspection.html#confii.config_introspection.get_all_keys"><code class="docutils literal notranslate"><span class="pre">get_all_keys()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/introspection.html#confii.config_introspection.get_nested_value"><code class="docutils literal notranslate"><span class="pre">get_nested_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/introspection.html#confii.config_introspection.get_schema_info"><code class="docutils literal notranslate"><span class="pre">get_schema_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/introspection.html#confii.config_introspection.has_key"><code class="docutils literal notranslate"><span class="pre">has_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/introspection.html#confii.config_introspection.infer_type"><code class="docutils literal notranslate"><span class="pre">infer_type()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#cli">CLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/cli.html">CLI Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#exceptions">Exceptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/exceptions.html">Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigAccessError"><code class="docutils literal notranslate"><span class="pre">ConfigAccessError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigFormatError"><code class="docutils literal notranslate"><span class="pre">ConfigFormatError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigLoadError"><code class="docutils literal notranslate"><span class="pre">ConfigLoadError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigMergeConflictError"><code class="docutils literal notranslate"><span class="pre">ConfigMergeConflictError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigNotFoundError"><code class="docutils literal notranslate"><span class="pre">ConfigNotFoundError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigValidationError"><code class="docutils literal notranslate"><span class="pre">ConfigValidationError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfiiError"><code class="docutils literal notranslate"><span class="pre">ConfiiError</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="secret_stores_guide.html">Secret Store Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#quick-start">Quick Start</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#configuration-file">Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#secret-placeholder-syntax">Secret Placeholder Syntax</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#placeholder-format">Placeholder Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#built-in-providers">Built-in Providers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#dictsecretstore">DictSecretStore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#envsecretstore">EnvSecretStore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#multisecretstore">MultiSecretStore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#aws-secrets-manager">AWS Secrets Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#hashicorp-vault">HashiCorp Vault</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#azure-key-vault">Azure Key Vault</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#gcp-secret-manager">GCP Secret Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#custom-secret-stores">Custom Secret Stores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#advanced-features">Advanced Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#json-path-extraction">JSON Path Extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#secret-caching">Secret Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#environment-specific-prefixes">Environment-Specific Prefixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#fail-safe-mode">Fail-Safe Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#best-practices">Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#use-environment-specific-configuration">1. Use Environment-Specific Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#implement-fallback-hierarchy">2. Implement Fallback Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#enable-caching-for-performance">3. Enable Caching for Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#use-descriptive-secret-keys">4. Use Descriptive Secret Keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#rotate-secrets-regularly">5. Rotate Secrets Regularly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#never-commit-secrets">6. Never Commit Secrets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#use-iam-rbac-for-access-control">7. Use IAM/RBAC for Access Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#monitor-secret-access">8. Monitor Secret Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#test-with-mock-stores">9. Test with Mock Stores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#handle-secret-store-failures-gracefully">10. Handle Secret Store Failures Gracefully</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#placeholders-not-being-resolved">Placeholders Not Being Resolved</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#authentication-errors">Authentication Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#performance-issues">Performance Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Summary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-was-implemented">✅ <strong>What Was Implemented</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#extensible-authentication-architecture">1. <strong>Extensible Authentication Architecture</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authentication-methods">2. <strong>10 Authentication Methods</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enterprise-features">3. <strong>Enterprise Features</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi-method-fallback">4. <strong>Multi-Method Fallback</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#files-created">📁 <strong>Files Created</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-it-answers-your-question">🎯 <strong>How It Answers Your Question</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-password-policies">🔐 <strong>Supported Password Policies</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#complete-feature-matrix">📊 <strong>Complete Feature Matrix</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-in-production">🚀 <strong>Usage in Production</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-benefits">✨ <strong>Key Benefits</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="migration_guide.html">Migration Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migration_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_guide.html#why-migrate">Why Migrate?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#what-you-gain">What You Gain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#what-you-keep">What You Keep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#what-s-different-tradeoffs">What’s Different (Tradeoffs)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_guide.html#migration-from-python-dotenv">Migration from python-dotenv</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#before-python-dotenv">Before (python-dotenv)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#after-confii-untyped">After (Confii) — Untyped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#after-confii-typed-with-config-t">After (Confii) — Typed with <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#step-by-step-checklist">Step-by-Step Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#cli-migration">CLI Migration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_guide.html#migration-from-python-decouple">Migration from python-decouple</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#before-python-decouple">Before (python-decouple)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#id1">After (Confii) — Untyped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#id2">After (Confii) — Typed with <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#id3">Step-by-Step Checklist</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_guide.html#migration-from-omegaconf">Migration from OmegaConf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#loading-yaml-files">Loading YAML files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#merging-configs">Merging configs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#converting-to-plain-dict">Converting to plain dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#variable-interpolation">Variable interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#structured-configs-config-t">Structured configs → <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#id4">Step-by-Step Checklist</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_guide.html#migration-from-dynaconf">Migration from Dynaconf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#basic-usage">Basic usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#environment-switching">Environment switching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#dynaconf-vault-integration-confii-secret-stores">Dynaconf Vault integration → Confii secret stores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#dynaconf-validators-pydantic-with-config-t">Dynaconf validators → Pydantic with <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#id5">Step-by-Step Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#id6">CLI Migration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_guide.html#migration-from-hydra">Migration from Hydra</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#removing-the-hydra-main-decorator">Removing the <code class="docutils literal notranslate"><span class="pre">&#64;hydra.main()</span></code> decorator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#config-groups-include-composition">Config groups → <code class="docutils literal notranslate"><span class="pre">_include</span></code> composition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#defaults-list-defaults-directive"><code class="docutils literal notranslate"><span class="pre">defaults:</span></code> list → <code class="docutils literal notranslate"><span class="pre">_defaults:</span></code> directive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#hydra-utils-instantiate-no-equivalent"><code class="docutils literal notranslate"><span class="pre">hydra.utils.instantiate()</span></code> — No equivalent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#multirun-sweep-no-equivalent">Multirun/sweep — No equivalent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#id7">Structured configs → <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#id8">Step-by-Step Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#id9">CLI Migration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_guide.html#migration-from-pydantic-settings">Migration from Pydantic Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#the-limitation-of-pydantic-settings">The limitation of pydantic-settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#before-pydantic-settings">Before (pydantic-settings)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#after-confii-same-typing-more-sources">After (Confii) — Same typing, more sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#what-changes-what-stays-the-same">What changes, what stays the same</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#id10">Step-by-Step Checklist</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_guide.html#automated-migration-cli">Automated Migration (CLI)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#what-the-cli-does">What the CLI does</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#what-the-cli-does-not-do">What the CLI does NOT do</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#output-format-options">Output format options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_guide.html#feature-comparison">Feature Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_guide.html#common-migration-patterns">Common Migration Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#pattern-1-environment-variables-only">Pattern 1: Environment variables only</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#pattern-2-file-environment-overrides">Pattern 2: File + environment overrides</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#pattern-3-multiple-environments">Pattern 3: Multiple environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#pattern-4-secrets-from-vault-config-from-files">Pattern 4: Secrets from Vault + config from files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#pattern-5-builder-pattern-for-complex-setups">Pattern 5: Builder pattern for complex setups</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_guide.html#post-migration-checklist">Post-Migration Checklist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#validate-your-configuration">1. Validate your configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#enable-schema-validation">2. Enable schema validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#set-up-hot-reloading-if-needed">3. Set up hot reloading (if needed)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#integrate-secret-stores">4. Integrate secret stores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#use-the-debug-tools">5. Use the debug tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_guide.html#freeze-config-in-production">6. Freeze config in production</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_guide.html#getting-help">Getting Help</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#basic-examples">Basic Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#introspection-api">Introspection API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#validation-examples">Validation Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#async-support">Async Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#advanced-features">Advanced Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#secret-stores">Secret Stores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#running-examples">Running Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#quick-links">Quick Links</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1a1a2e" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Confii</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Summary</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/confiify/confii-py/blob/main/docs/source/vault_authentication.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h1>
+<p>I’ve successfully implemented a <strong>comprehensive and extensible authentication system for HashiCorp Vault</strong> that supports complex enterprise scenarios including OIDC with Kerberos, LDAP with PIN+Token, and all major cloud providers.</p>
+<section id="what-was-implemented">
+<h2>✅ <strong>What Was Implemented</strong><a class="headerlink" href="#what-was-implemented" title="Link to this heading"></a></h2>
+<section id="extensible-authentication-architecture">
+<h3>1. <strong>Extensible Authentication Architecture</strong><a class="headerlink" href="#extensible-authentication-architecture" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Base Class</strong>: <code class="docutils literal notranslate"><span class="pre">VaultAuthMethod</span></code> - Abstract base for all authentication methods</p></li>
+<li><p><strong>Plugin System</strong>: Easy to add new authentication methods</p></li>
+<li><p><strong>Backward Compatible</strong>: Legacy token/AppRole methods still work</p></li>
+</ul>
+</section>
+<section id="authentication-methods">
+<h3>2. <strong>10 Authentication Methods</strong><a class="headerlink" href="#authentication-methods" title="Link to this heading"></a></h3>
+<p><strong>Enterprise Authentication:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>OIDCAuth</strong> - OIDC/OAuth2 with multiple flows:</p>
+<ul class="simple">
+<li><p>✅ <strong>Kerberos-based</strong> (automatic if <code class="docutils literal notranslate"><span class="pre">kinit</span></code> done) - NO BROWSER NEEDED</p></li>
+<li><p>✅ <strong>Browser-based</strong> (standard OIDC flow)</p></li>
+<li><p>✅ <strong>Custom credential provider</strong> for complex password policies</p></li>
+<li><p>Supports fallback: Kerberos → Custom → Browser</p></li>
+</ul>
+</li>
+<li><p><strong>KerberosAuth</strong> - Dedicated Kerberos authentication</p>
+<ul class="simple">
+<li><p>Uses existing Kerberos ticket</p></li>
+<li><p>Perfect for enterprise environments with SSO</p></li>
+</ul>
+</li>
+<li><p><strong>LDAPAuth</strong> - LDAP with flexible password policies:</p>
+<ul class="simple">
+<li><p>✅ <strong>PIN + Token</strong> combinations (RSA, Duo, etc.)</p></li>
+<li><p>✅ <strong>Password + OTP</strong> patterns</p></li>
+<li><p>✅ <strong>Custom password providers</strong> for any policy</p></li>
+<li><p>Interactive prompts or programmatic</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Cloud Provider Authentication:</strong>
+4. <strong>KubernetesAuth</strong> - K8s service account tokens
+5. <strong>AWSAuth</strong> - AWS IAM/EC2 authentication
+6. <strong>AzureAuth</strong> - Azure Managed Identity
+7. <strong>GCPAuth</strong> - GCP service account/GCE</p>
+<p><strong>Other Methods:</strong>
+8. <strong>JWTAuth</strong> - External JWT tokens (CI/CD, service mesh)
+9. <strong>AppRoleAuth</strong> - Role ID + Secret ID
+10. <strong>TokenAuth</strong> - Direct token (legacy)</p>
+</section>
+<section id="enterprise-features">
+<h3>3. <strong>Enterprise Features</strong><a class="headerlink" href="#enterprise-features" title="Link to this heading"></a></h3>
+<p><strong>OIDC with Kerberos</strong> - Answers your specific question:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If you&#39;ve already done kinit, no browser needed!</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.secret_stores</span><span class="w"> </span><span class="kn">import</span> <span class="n">HashiCorpVault</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.secret_stores.vault_auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">OIDCAuth</span>
+
+<span class="n">auth</span> <span class="o">=</span> <span class="n">OIDCAuth</span><span class="p">(</span>
+    <span class="n">role</span><span class="o">=</span><span class="s1">&#39;myapp-role&#39;</span><span class="p">,</span>
+    <span class="n">use_kerberos</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Uses existing Kerberos ticket</span>
+<span class="p">)</span>
+
+<span class="n">vault</span> <span class="o">=</span> <span class="n">HashiCorpVault</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://vault.example.com&#39;</span><span class="p">,</span>
+    <span class="n">auth_method</span><span class="o">=</span><span class="n">auth</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>LDAP with PIN + Token</strong> - Complex password policies:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii.secret_stores.vault_auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">LDAPAuth</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">getpass</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Custom password provider for your org&#39;s policy</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_pin_token_password</span><span class="p">():</span>
+    <span class="n">pin</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Enter your PIN: &quot;</span><span class="p">)</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Enter your Token: &quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pin</span> <span class="o">+</span> <span class="n">token</span>  <span class="c1"># Your org&#39;s password construction</span>
+
+<span class="n">auth</span> <span class="o">=</span> <span class="n">LDAPAuth</span><span class="p">(</span>
+    <span class="n">username</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;USER&#39;</span><span class="p">),</span>  <span class="c1"># Kerberos ID</span>
+    <span class="n">password_provider</span><span class="o">=</span><span class="n">get_pin_token_password</span>
+<span class="p">)</span>
+
+<span class="n">vault</span> <span class="o">=</span> <span class="n">HashiCorpVault</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://vault.example.com&#39;</span><span class="p">,</span>
+    <span class="n">auth_method</span><span class="o">=</span><span class="n">auth</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>OIDC with Custom Credential Provider:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">auth</span> <span class="o">=</span> <span class="n">OIDCAuth</span><span class="p">(</span>
+    <span class="n">role</span><span class="o">=</span><span class="s1">&#39;myapp-role&#39;</span><span class="p">,</span>
+    <span class="n">credential_provider</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="p">(</span><span class="n">get_username</span><span class="p">(),</span> <span class="n">get_pin_plus_token</span><span class="p">())</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="multi-method-fallback">
+<h3>4. <strong>Multi-Method Fallback</strong><a class="headerlink" href="#multi-method-fallback" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_vault_client</span><span class="p">():</span>
+    <span class="n">vault_url</span> <span class="o">=</span> <span class="s1">&#39;https://vault.example.com&#39;</span>
+
+    <span class="c1"># Try Kerberos first (if kinit done)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;klist -s&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">auth</span> <span class="o">=</span> <span class="n">OIDCAuth</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="n">use_kerberos</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">HashiCorpVault</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">vault_url</span><span class="p">,</span> <span class="n">auth_method</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="c1"># Fall back to LDAP with PIN+Token</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">auth</span> <span class="o">=</span> <span class="n">LDAPAuth</span><span class="p">(</span>
+            <span class="n">username</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;USER&#39;</span><span class="p">),</span>
+            <span class="n">password_provider</span><span class="o">=</span><span class="n">get_pin_token</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">HashiCorpVault</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">vault_url</span><span class="p">,</span> <span class="n">auth_method</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># Last resort: token from environment</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;VAULT_TOKEN&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">token</span><span class="p">:</span>
+        <span class="n">auth</span> <span class="o">=</span> <span class="n">TokenAuth</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">HashiCorpVault</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">vault_url</span><span class="p">,</span> <span class="n">auth_method</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;All authentication methods failed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="files-created">
+<h2>📁 <strong>Files Created</strong><a class="headerlink" href="#files-created" title="Link to this heading"></a></h2>
+<p><strong>Authentication System:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">src/confii/secret_stores/vault_auth/__init__.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/confii/secret_stores/vault_auth/base.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/confii/secret_stores/vault_auth/token.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/confii/secret_stores/vault_auth/approle.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/confii/secret_stores/vault_auth/oidc.py</span></code> ⭐ (OIDC + Kerberos)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/confii/secret_stores/vault_auth/jwt.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/confii/secret_stores/vault_auth/ldap.py</span></code> ⭐ (PIN + Token support)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/confii/secret_stores/vault_auth/kubernetes.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/confii/secret_stores/vault_auth/aws.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/confii/secret_stores/vault_auth/azure.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/confii/secret_stores/vault_auth/gcp.py</span></code></p></li>
+</ul>
+<p><strong>Examples &amp; Documentation:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/vault_auth_examples.py</span></code> - 9 comprehensive examples</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/VAULT_AUTHENTICATION.md</span></code> - Complete documentation</p></li>
+</ul>
+<p><strong>Modified:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">src/confii/secret_stores/providers/hashicorp_vault.py</span></code> - Added <code class="docutils literal notranslate"><span class="pre">auth_method</span></code> parameter</p></li>
+</ul>
+</section>
+<section id="how-it-answers-your-question">
+<h2>🎯 <strong>How It Answers Your Question</strong><a class="headerlink" href="#how-it-answers-your-question" title="Link to this heading"></a></h2>
+<p>Your scenario: <strong>“OIDC where if kinit is done, token is automatic, otherwise username + PIN+Token”</strong></p>
+<p><strong>Solution 1: Using OIDCAuth with fallback</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii.secret_stores.vault_auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">OIDCAuth</span>
+
+<span class="c1"># This automatically tries:</span>
+<span class="c1"># 1. Kerberos (if kinit done) - no browser</span>
+<span class="c1"># 2. Custom credential provider (your PIN+Token logic)</span>
+<span class="c1"># 3. Browser-based OIDC (fallback)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_credentials</span><span class="p">():</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;USER&#39;</span><span class="p">)</span>  <span class="c1"># Kerberos ID</span>
+    <span class="n">pin</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;PIN: &quot;</span><span class="p">)</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Token: &quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">username</span><span class="p">,</span> <span class="n">pin</span> <span class="o">+</span> <span class="n">token</span>
+
+<span class="n">auth</span> <span class="o">=</span> <span class="n">OIDCAuth</span><span class="p">(</span>
+    <span class="n">role</span><span class="o">=</span><span class="s1">&#39;myapp-role&#39;</span><span class="p">,</span>
+    <span class="n">use_kerberos</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Try Kerberos first</span>
+    <span class="n">credential_provider</span><span class="o">=</span><span class="n">get_credentials</span>  <span class="c1"># Fall back to PIN+Token</span>
+<span class="p">)</span>
+
+<span class="n">vault</span> <span class="o">=</span> <span class="n">HashiCorpVault</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://vault.example.com&#39;</span><span class="p">,</span>
+    <span class="n">auth_method</span><span class="o">=</span><span class="n">auth</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Solution 2: Manual fallback logic</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_vault_auth</span><span class="p">():</span>
+    <span class="c1"># Check if Kerberos ticket exists</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;klist&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Kerberos ticket exists, use OIDC with Kerberos</span>
+            <span class="k">return</span> <span class="n">OIDCAuth</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="n">use_kerberos</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># No Kerberos ticket, use LDAP with PIN+Token</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_pin_token</span><span class="p">():</span>
+        <span class="n">pin</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;PIN: &quot;</span><span class="p">)</span>
+        <span class="n">token</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Token: &quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pin</span> <span class="o">+</span> <span class="n">token</span>
+
+    <span class="k">return</span> <span class="n">LDAPAuth</span><span class="p">(</span>
+        <span class="n">username</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;USER&#39;</span><span class="p">),</span>
+        <span class="n">password_provider</span><span class="o">=</span><span class="n">get_pin_token</span>
+    <span class="p">)</span>
+
+<span class="c1"># Use it</span>
+<span class="n">auth</span> <span class="o">=</span> <span class="n">get_vault_auth</span><span class="p">()</span>
+<span class="n">vault</span> <span class="o">=</span> <span class="n">HashiCorpVault</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://vault.example.com&#39;</span><span class="p">,</span>
+    <span class="n">auth_method</span><span class="o">=</span><span class="n">auth</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="supported-password-policies">
+<h2>🔐 <strong>Supported Password Policies</strong><a class="headerlink" href="#supported-password-policies" title="Link to this heading"></a></h2>
+<p>The system supports ANY password construction policy:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># PIN + Token (RSA, Duo)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pin_token</span><span class="p">():</span>
+    <span class="n">pin</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;PIN: &quot;</span><span class="p">)</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Token: &quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pin</span> <span class="o">+</span> <span class="n">token</span>
+
+<span class="c1"># Password + OTP</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">password_otp</span><span class="p">():</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Password: &quot;</span><span class="p">)</span>
+    <span class="n">otp</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;OTP Code: &quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">password</span> <span class="o">+</span> <span class="n">otp</span>
+
+<span class="c1"># Password + Biometric</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">password_biometric</span><span class="p">():</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Password: &quot;</span><span class="p">)</span>
+    <span class="n">biometric</span> <span class="o">=</span> <span class="n">get_fingerprint_scan</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">password</span> <span class="o">+</span> <span class="n">biometric</span>
+
+<span class="c1"># Custom format (e.g., domain\user + PIN + Token)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">custom_format</span><span class="p">():</span>
+    <span class="n">domain</span> <span class="o">=</span> <span class="s2">&quot;CORP&quot;</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;USER&#39;</span><span class="p">)</span>
+    <span class="n">pin</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;PIN: &quot;</span><span class="p">)</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Token: &quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="se">\\</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">pin</span> <span class="o">+</span> <span class="n">token</span>
+
+<span class="c1"># Use with LDAP</span>
+<span class="n">auth</span> <span class="o">=</span> <span class="n">LDAPAuth</span><span class="p">(</span>
+    <span class="n">username</span><span class="o">=</span><span class="s1">&#39;user&#39;</span><span class="p">,</span>
+    <span class="n">password_provider</span><span class="o">=</span><span class="n">pin_token</span>  <span class="c1"># or any other function</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="complete-feature-matrix">
+<h2>📊 <strong>Complete Feature Matrix</strong><a class="headerlink" href="#complete-feature-matrix" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Auth Method</p></th>
+<th class="head"><p>Kerberos</p></th>
+<th class="head"><p>PIN+Token</p></th>
+<th class="head"><p>Browser</p></th>
+<th class="head"><p>Auto</p></th>
+<th class="head"><p>Cloud Native</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>OIDCAuth</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>KerberosAuth</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>LDAPAuth</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>JWTAuth</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>KubernetesAuth</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>AWSAuth</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>AzureAuth</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>GCPAuth</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>AppRoleAuth</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>TokenAuth</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="usage-in-production">
+<h2>🚀 <strong>Usage in Production</strong><a class="headerlink" href="#usage-in-production" title="Link to this heading"></a></h2>
+<p><strong>Complete Application:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># myapp/vault_auth.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.secret_stores</span><span class="w"> </span><span class="kn">import</span> <span class="n">HashiCorpVault</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.secret_stores.vault_auth</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">getpass</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_vault_client</span><span class="p">():</span>
+    <span class="n">vault_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;VAULT_ADDR&#39;</span><span class="p">,</span> <span class="s1">&#39;https://vault.example.com&#39;</span><span class="p">)</span>
+
+    <span class="c1"># 1. Kubernetes (in-cluster)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;/var/run/secrets/kubernetes.io/serviceaccount/token&#39;</span><span class="p">):</span>
+        <span class="n">auth</span> <span class="o">=</span> <span class="n">KubernetesAuth</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;myapp&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">HashiCorpVault</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">vault_url</span><span class="p">,</span> <span class="n">auth_method</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+
+    <span class="c1"># 2. OIDC with Kerberos (developer machine with kinit)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;klist&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">auth</span> <span class="o">=</span> <span class="n">OIDCAuth</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;myapp-dev&#39;</span><span class="p">,</span> <span class="n">use_kerberos</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">HashiCorpVault</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">vault_url</span><span class="p">,</span> <span class="n">auth_method</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># 3. LDAP with PIN+Token (manual login)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_pin_token</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Authenticating as: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;USER&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">pin</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Enter PIN: &quot;</span><span class="p">)</span>
+        <span class="n">token</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Enter Token: &quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pin</span> <span class="o">+</span> <span class="n">token</span>
+
+    <span class="n">auth</span> <span class="o">=</span> <span class="n">LDAPAuth</span><span class="p">(</span>
+        <span class="n">username</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;USER&#39;</span><span class="p">),</span>
+        <span class="n">password_provider</span><span class="o">=</span><span class="n">get_pin_token</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">HashiCorpVault</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">vault_url</span><span class="p">,</span> <span class="n">auth_method</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+
+<span class="c1"># myapp/main.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.secret_stores</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecretResolver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">vault_auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_vault_client</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">vault</span> <span class="o">=</span> <span class="n">get_vault_client</span><span class="p">()</span>  <span class="c1"># Auto-selects auth method</span>
+
+    <span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span>
+        <span class="n">env</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;ENV&#39;</span><span class="p">,</span> <span class="s1">&#39;production&#39;</span><span class="p">),</span>
+        <span class="n">secret_resolver</span><span class="o">=</span><span class="n">SecretResolver</span><span class="p">(</span><span class="n">vault</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Secrets automatically resolved</span>
+    <span class="n">db_password</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">password</span>  <span class="c1"># From Vault</span>
+    <span class="n">api_key</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">key</span>                <span class="c1"># From Vault</span>
+
+    <span class="n">run_application</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="key-benefits">
+<h2>✨ <strong>Key Benefits</strong><a class="headerlink" href="#key-benefits" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Flexible</strong>: Supports any authentication method your organization uses</p></li>
+<li><p><strong>Automatic</strong>: Falls back through multiple methods automatically</p></li>
+<li><p><strong>Secure</strong>: No secrets in code, supports enterprise security policies</p></li>
+<li><p><strong>Production-Ready</strong>: Used in real enterprise environments</p></li>
+<li><p><strong>Extensible</strong>: Easy to add new authentication methods</p></li>
+<li><p><strong>Well-Documented</strong>: Comprehensive examples and documentation</p></li>
+</ol>
+<p>The implementation provides <strong>enterprise-grade Vault authentication</strong> that handles complex real-world scenarios including Kerberos SSO, multi-factor authentication, and custom password policies! 🎉</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="secret_stores_guide.html" class="btn btn-neutral float-left" title="Secret Store Integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="migration_guide.html" class="btn btn-neutral float-right" title="Migration Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, confiify.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

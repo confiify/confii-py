@@ -100,6 +100,14 @@ Documentation
 
 .. toctree::
    :maxdepth: 1
+   :caption: Guides
+
+   secret_stores_guide
+   vault_authentication
+   migration_guide
+
+.. toctree::
+   :maxdepth: 1
    :caption: Resources
 
    examples

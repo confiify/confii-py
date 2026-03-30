@@ -6,18 +6,23 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User Guide &mdash; Confii 2026.3.30.2 documentation</title>
+  <title>User Guide &mdash; Confii 2026.3.30.3 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5349f25f" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=464dce26" />
 
   
     <link rel="shortcut icon" href="../_static/confii-py-logo.png"/>
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=4de52880"></script>
+      <script src="../_static/documentation_options.js?v=e99dac99"></script>
       <script src="../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=fd10adb8"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -214,6 +219,165 @@
 </li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../secret_stores_guide.html">Secret Store Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../secret_stores_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../secret_stores_guide.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../secret_stores_guide.html#quick-start">Quick Start</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#configuration-file">Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../secret_stores_guide.html#secret-placeholder-syntax">Secret Placeholder Syntax</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#placeholder-format">Placeholder Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../secret_stores_guide.html#built-in-providers">Built-in Providers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#dictsecretstore">DictSecretStore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#envsecretstore">EnvSecretStore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#multisecretstore">MultiSecretStore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#aws-secrets-manager">AWS Secrets Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#hashicorp-vault">HashiCorp Vault</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#azure-key-vault">Azure Key Vault</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#gcp-secret-manager">GCP Secret Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../secret_stores_guide.html#custom-secret-stores">Custom Secret Stores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../secret_stores_guide.html#advanced-features">Advanced Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#json-path-extraction">JSON Path Extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#secret-caching">Secret Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#environment-specific-prefixes">Environment-Specific Prefixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#fail-safe-mode">Fail-Safe Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../secret_stores_guide.html#best-practices">Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#use-environment-specific-configuration">1. Use Environment-Specific Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#implement-fallback-hierarchy">2. Implement Fallback Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#enable-caching-for-performance">3. Enable Caching for Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#use-descriptive-secret-keys">4. Use Descriptive Secret Keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#rotate-secrets-regularly">5. Rotate Secrets Regularly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#never-commit-secrets">6. Never Commit Secrets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#use-iam-rbac-for-access-control">7. Use IAM/RBAC for Access Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#monitor-secret-access">8. Monitor Secret Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#test-with-mock-stores">9. Test with Mock Stores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#handle-secret-store-failures-gracefully">10. Handle Secret Store Failures Gracefully</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../secret_stores_guide.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../secret_stores_guide.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#placeholders-not-being-resolved">Placeholders Not Being Resolved</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#authentication-errors">Authentication Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../secret_stores_guide.html#performance-issues">Performance Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../secret_stores_guide.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../vault_authentication.html">Summary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../vault_authentication.html#what-was-implemented">✅ <strong>What Was Implemented</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../vault_authentication.html#extensible-authentication-architecture">1. <strong>Extensible Authentication Architecture</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vault_authentication.html#authentication-methods">2. <strong>10 Authentication Methods</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vault_authentication.html#enterprise-features">3. <strong>Enterprise Features</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vault_authentication.html#multi-method-fallback">4. <strong>Multi-Method Fallback</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../vault_authentication.html#files-created">📁 <strong>Files Created</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vault_authentication.html#how-it-answers-your-question">🎯 <strong>How It Answers Your Question</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vault_authentication.html#supported-password-policies">🔐 <strong>Supported Password Policies</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vault_authentication.html#complete-feature-matrix">📊 <strong>Complete Feature Matrix</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vault_authentication.html#usage-in-production">🚀 <strong>Usage in Production</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vault_authentication.html#key-benefits">✨ <strong>Key Benefits</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../migration_guide.html">Migration Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../migration_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migration_guide.html#why-migrate">Why Migrate?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#what-you-gain">What You Gain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#what-you-keep">What You Keep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#what-s-different-tradeoffs">What’s Different (Tradeoffs)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration_guide.html#migration-from-python-dotenv">Migration from python-dotenv</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#before-python-dotenv">Before (python-dotenv)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#after-confii-untyped">After (Confii) — Untyped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#after-confii-typed-with-config-t">After (Confii) — Typed with <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#step-by-step-checklist">Step-by-Step Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#cli-migration">CLI Migration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration_guide.html#migration-from-python-decouple">Migration from python-decouple</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#before-python-decouple">Before (python-decouple)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#id1">After (Confii) — Untyped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#id2">After (Confii) — Typed with <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#id3">Step-by-Step Checklist</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration_guide.html#migration-from-omegaconf">Migration from OmegaConf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#loading-yaml-files">Loading YAML files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#merging-configs">Merging configs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#converting-to-plain-dict">Converting to plain dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#variable-interpolation">Variable interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#structured-configs-config-t">Structured configs → <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#id4">Step-by-Step Checklist</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration_guide.html#migration-from-dynaconf">Migration from Dynaconf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#basic-usage">Basic usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#environment-switching">Environment switching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#dynaconf-vault-integration-confii-secret-stores">Dynaconf Vault integration → Confii secret stores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#dynaconf-validators-pydantic-with-config-t">Dynaconf validators → Pydantic with <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#id5">Step-by-Step Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#id6">CLI Migration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration_guide.html#migration-from-hydra">Migration from Hydra</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#removing-the-hydra-main-decorator">Removing the <code class="docutils literal notranslate"><span class="pre">&#64;hydra.main()</span></code> decorator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#config-groups-include-composition">Config groups → <code class="docutils literal notranslate"><span class="pre">_include</span></code> composition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#defaults-list-defaults-directive"><code class="docutils literal notranslate"><span class="pre">defaults:</span></code> list → <code class="docutils literal notranslate"><span class="pre">_defaults:</span></code> directive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#hydra-utils-instantiate-no-equivalent"><code class="docutils literal notranslate"><span class="pre">hydra.utils.instantiate()</span></code> — No equivalent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#multirun-sweep-no-equivalent">Multirun/sweep — No equivalent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#id7">Structured configs → <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#id8">Step-by-Step Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#id9">CLI Migration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration_guide.html#migration-from-pydantic-settings">Migration from Pydantic Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#the-limitation-of-pydantic-settings">The limitation of pydantic-settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#before-pydantic-settings">Before (pydantic-settings)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#after-confii-same-typing-more-sources">After (Confii) — Same typing, more sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#what-changes-what-stays-the-same">What changes, what stays the same</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#id10">Step-by-Step Checklist</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration_guide.html#automated-migration-cli">Automated Migration (CLI)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#what-the-cli-does">What the CLI does</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#what-the-cli-does-not-do">What the CLI does NOT do</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#output-format-options">Output format options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration_guide.html#feature-comparison">Feature Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migration_guide.html#common-migration-patterns">Common Migration Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#pattern-1-environment-variables-only">Pattern 1: Environment variables only</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#pattern-2-file-environment-overrides">Pattern 2: File + environment overrides</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#pattern-3-multiple-environments">Pattern 3: Multiple environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#pattern-4-secrets-from-vault-config-from-files">Pattern 4: Secrets from Vault + config from files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#pattern-5-builder-pattern-for-complex-setups">Pattern 5: Builder pattern for complex setups</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration_guide.html#post-migration-checklist">Post-Migration Checklist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#validate-your-configuration">1. Validate your configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#enable-schema-validation">2. Enable schema validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#set-up-hot-reloading-if-needed">3. Set up hot reloading (if needed)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#integrate-secret-stores">4. Integrate secret stores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#use-the-debug-tools">5. Use the debug tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration_guide.html#freeze-config-in-production">6. Freeze config in production</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../migration_guide.html#getting-help">Getting Help</a></li>
 </ul>
 </li>
 </ul>

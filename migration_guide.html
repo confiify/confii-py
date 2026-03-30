@@ -1,0 +1,1656 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Migration Guide &mdash; Confii 2026.3.30.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5349f25f" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=464dce26" />
+
+  
+    <link rel="shortcut icon" href="_static/confii-py-logo.png"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e99dac99"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=fd10adb8"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Summary" href="vault_authentication.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #1a1a2e" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/confii-py-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#what-is-confii">What is Confii?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#why-confii">Why Confii?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#use-cases">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#key-concepts">Key Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#basic-installation">Basic Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#optional-dependencies">Optional Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#individual-secret-store-dependencies">Individual Secret Store Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#verifying-installation">Verifying Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#multiple-sources">Multiple Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#with-secret-stores">With Secret Stores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#with-schema-validation">With Schema Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#debug-mode">Debug Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#alternative-access-methods">Alternative Access Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/configuration_sources.html">Configuration Sources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/configuration_sources.html#file-loaders">File Loaders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/configuration_sources.html#environment-variables">Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/configuration_sources.html#cloud-storage">Cloud Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/configuration_sources.html#remote-urls">Remote URLs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/secret_stores.html">Secret Stores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/secret_stores.html#quick-example">Quick Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/validation.html">Schema Validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/validation.html#pydantic-validation">Pydantic Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/validation.html#json-schema-validation">JSON Schema Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/advanced_features.html">Advanced Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/advanced_features.html#configuration-versioning">Configuration Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/advanced_features.html#drift-detection">Drift Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/advanced_features.html#observability">Observability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/advanced_features.html#async-support">Async Support</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#core-classes">Core Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/config.html">Config Class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/config.html#confii.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/config_builder.html">ConfigBuilder</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/config_builder.html#confii.config_builder.ConfigBuilder"><code class="docutils literal notranslate"><span class="pre">ConfigBuilder</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/config_builder.html#confii.config_builder.builder"><code class="docutils literal notranslate"><span class="pre">builder()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#loaders">Loaders</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/loaders.html">Loaders</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders">Configuration Loaders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.loader">Base Loader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.yaml_loader">YAML Loader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.json_loader">JSON Loader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.toml_loader">TOML Loader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.environment_loader">Environment Loader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.remote_loader">Remote Loaders</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#secret-stores">Secret Stores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/secret_stores.html">Secret Stores</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.AWSSecretsManager"><code class="docutils literal notranslate"><span class="pre">AWSSecretsManager</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.AzureKeyVault"><code class="docutils literal notranslate"><span class="pre">AzureKeyVault</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.DictSecretStore"><code class="docutils literal notranslate"><span class="pre">DictSecretStore</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.EnvSecretStore"><code class="docutils literal notranslate"><span class="pre">EnvSecretStore</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.GCPSecretManager"><code class="docutils literal notranslate"><span class="pre">GCPSecretManager</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.HashiCorpVault"><code class="docutils literal notranslate"><span class="pre">HashiCorpVault</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.MultiSecretStore"><code class="docutils literal notranslate"><span class="pre">MultiSecretStore</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.SecretResolver"><code class="docutils literal notranslate"><span class="pre">SecretResolver</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.SecretStore"><code class="docutils literal notranslate"><span class="pre">SecretStore</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#validators">Validators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/validators.html">Validators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/validators.html#available-validators">Available Validators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/validators.html#confii.validators.PydanticValidator"><code class="docutils literal notranslate"><span class="pre">PydanticValidator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/validators.html#confii.validators.SchemaValidator"><code class="docutils literal notranslate"><span class="pre">SchemaValidator</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#advanced-features">Advanced Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/async_config.html">Async Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/async_config.html#confii.async_config.AsyncConfig"><code class="docutils literal notranslate"><span class="pre">AsyncConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/async_config.html#confii.async_config.AsyncHTTPLoader"><code class="docutils literal notranslate"><span class="pre">AsyncHTTPLoader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/async_config.html#confii.async_config.AsyncLoader"><code class="docutils literal notranslate"><span class="pre">AsyncLoader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/async_config.html#confii.async_config.AsyncYamlLoader"><code class="docutils literal notranslate"><span class="pre">AsyncYamlLoader</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/config_diff.html">Configuration Diff</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/config_diff.html#confii.config_diff.ConfigDiff"><code class="docutils literal notranslate"><span class="pre">ConfigDiff</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/config_diff.html#confii.config_diff.ConfigDiffer"><code class="docutils literal notranslate"><span class="pre">ConfigDiffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/config_diff.html#confii.config_diff.ConfigDriftDetector"><code class="docutils literal notranslate"><span class="pre">ConfigDriftDetector</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/config_diff.html#confii.config_diff.DiffType"><code class="docutils literal notranslate"><span class="pre">DiffType</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/config_versioning.html">Configuration Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/config_versioning.html#confii.config_versioning.ConfigVersion"><code class="docutils literal notranslate"><span class="pre">ConfigVersion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/config_versioning.html#confii.config_versioning.ConfigVersionManager"><code class="docutils literal notranslate"><span class="pre">ConfigVersionManager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/observability.html">Observability</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/observability.html#confii.observability.ConfigAccessMetric"><code class="docutils literal notranslate"><span class="pre">ConfigAccessMetric</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/observability.html#confii.observability.ConfigEventEmitter"><code class="docutils literal notranslate"><span class="pre">ConfigEventEmitter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/observability.html#confii.observability.ConfigMetrics"><code class="docutils literal notranslate"><span class="pre">ConfigMetrics</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/observability.html#confii.observability.ConfigObserver"><code class="docutils literal notranslate"><span class="pre">ConfigObserver</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/merge_strategies.html">Merge Strategies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/merge_strategies.html#confii.merge_strategies.AdvancedConfigMerger"><code class="docutils literal notranslate"><span class="pre">AdvancedConfigMerger</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/merge_strategies.html#confii.merge_strategies.MergeStrategy"><code class="docutils literal notranslate"><span class="pre">MergeStrategy</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#utilities">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/introspection.html">Configuration Introspection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/introspection.html#confii.config_introspection.get_all_keys"><code class="docutils literal notranslate"><span class="pre">get_all_keys()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/introspection.html#confii.config_introspection.get_nested_value"><code class="docutils literal notranslate"><span class="pre">get_nested_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/introspection.html#confii.config_introspection.get_schema_info"><code class="docutils literal notranslate"><span class="pre">get_schema_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/introspection.html#confii.config_introspection.has_key"><code class="docutils literal notranslate"><span class="pre">has_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/introspection.html#confii.config_introspection.infer_type"><code class="docutils literal notranslate"><span class="pre">infer_type()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#cli">CLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/cli.html">CLI Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#exceptions">Exceptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/exceptions.html">Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigAccessError"><code class="docutils literal notranslate"><span class="pre">ConfigAccessError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigFormatError"><code class="docutils literal notranslate"><span class="pre">ConfigFormatError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigLoadError"><code class="docutils literal notranslate"><span class="pre">ConfigLoadError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigMergeConflictError"><code class="docutils literal notranslate"><span class="pre">ConfigMergeConflictError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigNotFoundError"><code class="docutils literal notranslate"><span class="pre">ConfigNotFoundError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigValidationError"><code class="docutils literal notranslate"><span class="pre">ConfigValidationError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfiiError"><code class="docutils literal notranslate"><span class="pre">ConfiiError</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="secret_stores_guide.html">Secret Store Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#quick-start">Quick Start</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#configuration-file">Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#secret-placeholder-syntax">Secret Placeholder Syntax</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#placeholder-format">Placeholder Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#built-in-providers">Built-in Providers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#dictsecretstore">DictSecretStore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#envsecretstore">EnvSecretStore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#multisecretstore">MultiSecretStore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#aws-secrets-manager">AWS Secrets Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#hashicorp-vault">HashiCorp Vault</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#azure-key-vault">Azure Key Vault</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#gcp-secret-manager">GCP Secret Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#custom-secret-stores">Custom Secret Stores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#advanced-features">Advanced Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#json-path-extraction">JSON Path Extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#secret-caching">Secret Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#environment-specific-prefixes">Environment-Specific Prefixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#fail-safe-mode">Fail-Safe Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#best-practices">Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#use-environment-specific-configuration">1. Use Environment-Specific Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#implement-fallback-hierarchy">2. Implement Fallback Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#enable-caching-for-performance">3. Enable Caching for Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#use-descriptive-secret-keys">4. Use Descriptive Secret Keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#rotate-secrets-regularly">5. Rotate Secrets Regularly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#never-commit-secrets">6. Never Commit Secrets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#use-iam-rbac-for-access-control">7. Use IAM/RBAC for Access Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#monitor-secret-access">8. Monitor Secret Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#test-with-mock-stores">9. Test with Mock Stores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#handle-secret-store-failures-gracefully">10. Handle Secret Store Failures Gracefully</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#placeholders-not-being-resolved">Placeholders Not Being Resolved</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#authentication-errors">Authentication Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secret_stores_guide.html#performance-issues">Performance Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="secret_stores_guide.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vault_authentication.html">Summary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vault_authentication.html#what-was-implemented">✅ <strong>What Was Implemented</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vault_authentication.html#extensible-authentication-architecture">1. <strong>Extensible Authentication Architecture</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vault_authentication.html#authentication-methods">2. <strong>10 Authentication Methods</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vault_authentication.html#enterprise-features">3. <strong>Enterprise Features</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vault_authentication.html#multi-method-fallback">4. <strong>Multi-Method Fallback</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vault_authentication.html#files-created">📁 <strong>Files Created</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault_authentication.html#how-it-answers-your-question">🎯 <strong>How It Answers Your Question</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault_authentication.html#supported-password-policies">🔐 <strong>Supported Password Policies</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault_authentication.html#complete-feature-matrix">📊 <strong>Complete Feature Matrix</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault_authentication.html#usage-in-production">🚀 <strong>Usage in Production</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault_authentication.html#key-benefits">✨ <strong>Key Benefits</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Migration Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-migrate">Why Migrate?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-you-gain">What You Gain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-you-keep">What You Keep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-s-different-tradeoffs">What’s Different (Tradeoffs)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#migration-from-python-dotenv">Migration from python-dotenv</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-python-dotenv">Before (python-dotenv)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#after-confii-untyped">After (Confii) — Untyped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#after-confii-typed-with-config-t">After (Confii) — Typed with <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-by-step-checklist">Step-by-Step Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cli-migration">CLI Migration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#migration-from-python-decouple">Migration from python-decouple</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-python-decouple">Before (python-decouple)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">After (Confii) — Untyped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">After (Confii) — Typed with <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Step-by-Step Checklist</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#migration-from-omegaconf">Migration from OmegaConf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#loading-yaml-files">Loading YAML files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#merging-configs">Merging configs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#converting-to-plain-dict">Converting to plain dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variable-interpolation">Variable interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#structured-configs-config-t">Structured configs → <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Step-by-Step Checklist</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#migration-from-dynaconf">Migration from Dynaconf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-usage">Basic usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#environment-switching">Environment switching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dynaconf-vault-integration-confii-secret-stores">Dynaconf Vault integration → Confii secret stores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dynaconf-validators-pydantic-with-config-t">Dynaconf validators → Pydantic with <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Step-by-Step Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">CLI Migration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#migration-from-hydra">Migration from Hydra</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#removing-the-hydra-main-decorator">Removing the <code class="docutils literal notranslate"><span class="pre">&#64;hydra.main()</span></code> decorator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config-groups-include-composition">Config groups → <code class="docutils literal notranslate"><span class="pre">_include</span></code> composition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#defaults-list-defaults-directive"><code class="docutils literal notranslate"><span class="pre">defaults:</span></code> list → <code class="docutils literal notranslate"><span class="pre">_defaults:</span></code> directive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hydra-utils-instantiate-no-equivalent"><code class="docutils literal notranslate"><span class="pre">hydra.utils.instantiate()</span></code> — No equivalent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multirun-sweep-no-equivalent">Multirun/sweep — No equivalent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Structured configs → <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Step-by-Step Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">CLI Migration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#migration-from-pydantic-settings">Migration from Pydantic Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-limitation-of-pydantic-settings">The limitation of pydantic-settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#before-pydantic-settings">Before (pydantic-settings)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#after-confii-same-typing-more-sources">After (Confii) — Same typing, more sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-changes-what-stays-the-same">What changes, what stays the same</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Step-by-Step Checklist</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#automated-migration-cli">Automated Migration (CLI)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-the-cli-does">What the CLI does</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-the-cli-does-not-do">What the CLI does NOT do</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-format-options">Output format options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-comparison">Feature Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#common-migration-patterns">Common Migration Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pattern-1-environment-variables-only">Pattern 1: Environment variables only</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pattern-2-file-environment-overrides">Pattern 2: File + environment overrides</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pattern-3-multiple-environments">Pattern 3: Multiple environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pattern-4-secrets-from-vault-config-from-files">Pattern 4: Secrets from Vault + config from files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pattern-5-builder-pattern-for-complex-setups">Pattern 5: Builder pattern for complex setups</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#post-migration-checklist">Post-Migration Checklist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#validate-your-configuration">1. Validate your configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enable-schema-validation">2. Enable schema validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-hot-reloading-if-needed">3. Set up hot reloading (if needed)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integrate-secret-stores">4. Integrate secret stores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-the-debug-tools">5. Use the debug tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freeze-config-in-production">6. Freeze config in production</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting Help</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#basic-examples">Basic Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#introspection-api">Introspection API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#validation-examples">Validation Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#async-support">Async Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#advanced-features">Advanced Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#secret-stores">Secret Stores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#running-examples">Running Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#quick-links">Quick Links</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1a1a2e" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Confii</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Migration Guide</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/confiify/confii-py/blob/main/docs/source/migration_guide.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="migration-guide">
+<h1>Migration Guide<a class="headerlink" href="#migration-guide" title="Link to this heading"></a></h1>
+<p>This guide helps you migrate from other configuration management libraries to Confii.</p>
+<hr class="docutils" />
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#why-migrate">Why Migrate?</a></p></li>
+<li><p><a class="reference internal" href="#migration-from-python-dotenv">Migration from python-dotenv</a></p></li>
+<li><p><a class="reference internal" href="#migration-from-python-decouple">Migration from python-decouple</a></p></li>
+<li><p><a class="reference internal" href="#migration-from-omegaconf">Migration from OmegaConf</a></p></li>
+<li><p><a class="reference internal" href="#migration-from-dynaconf">Migration from Dynaconf</a></p></li>
+<li><p><a class="reference internal" href="#migration-from-hydra">Migration from Hydra</a></p></li>
+<li><p><a class="reference internal" href="#migration-from-pydantic-settings">Migration from Pydantic Settings</a></p></li>
+<li><p><a class="reference internal" href="#automated-migration-cli">Automated Migration (CLI)</a></p></li>
+<li><p><a class="reference internal" href="#feature-comparison">Feature Comparison</a></p></li>
+<li><p><a class="reference internal" href="#common-migration-patterns">Common Migration Patterns</a></p></li>
+<li><p><a class="reference internal" href="#post-migration-checklist">Post-Migration Checklist</a></p></li>
+<li><p><a class="reference internal" href="#getting-help">Getting Help</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="why-migrate">
+<h2>Why Migrate?<a class="headerlink" href="#why-migrate" title="Link to this heading"></a></h2>
+<section id="what-you-gain">
+<h3>What You Gain<a class="headerlink" href="#what-you-gain" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Capability</p></th>
+<th class="head"><p>What it means</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Unified multi-source loading</strong></p></td>
+<td><p>YAML, JSON, TOML, INI, env vars, S3, SSM, Azure Blob, GCP Storage, Git — one API</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">Config[T]</span></code> typed access</strong></p></td>
+<td><p>Full IDE autocomplete and mypy/pyright checking via <code class="docutils literal notranslate"><span class="pre">.typed</span></code> property</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Secret store integration</strong></p></td>
+<td><p>AWS Secrets Manager, Azure Key Vault, GCP Secret Manager, HashiCorp Vault (10 auth methods)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Source tracking</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">config.get_source(&quot;database.host&quot;)</span></code> tells you which file set each value</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hot reload</strong></p></td>
+<td><p>File watcher detects changes and reloads automatically</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Composition</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">_include</span></code> and <code class="docutils literal notranslate"><span class="pre">_defaults</span></code> directives for composing configs from fragments</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Config diffing</strong></p></td>
+<td><p>Compare two config states programmatically</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="what-you-keep">
+<h3>What You Keep<a class="headerlink" href="#what-you-keep" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Pydantic models work unchanged.</strong> Pass your existing <code class="docutils literal notranslate"><span class="pre">BaseModel</span></code> as <code class="docutils literal notranslate"><span class="pre">schema=</span></code> and it just works.</p></li>
+<li><p><strong>YAML/JSON/TOML files are compatible.</strong> No format conversion needed for standard files.</p></li>
+<li><p><strong>Environment variables still work.</strong> <code class="docutils literal notranslate"><span class="pre">EnvironmentLoader</span></code> reads them with prefix-based nesting.</p></li>
+</ul>
+</section>
+<section id="what-s-different-tradeoffs">
+<h3>What’s Different (Tradeoffs)<a class="headerlink" href="#what-s-different-tradeoffs" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Area</p></th>
+<th class="head"><p>Detail</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>No variable interpolation</strong></p></td>
+<td><p>Confii does not support <code class="docutils literal notranslate"><span class="pre">${db.host}</span></code>-style interpolation within config values. Use <code class="docutils literal notranslate"><span class="pre">${ENV_VAR}</span></code> expansion for environment variables instead.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>No multirun/sweep</strong></p></td>
+<td><p>Hydra’s experiment sweep feature has no equivalent. Use an external orchestrator.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>No <code class="docutils literal notranslate"><span class="pre">instantiate()</span></code></strong></p></td>
+<td><p>Hydra’s <code class="docutils literal notranslate"><span class="pre">hydra.utils.instantiate()</span></code> for object creation is not provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Learning curve</strong></p></td>
+<td><p>If your team is deeply invested in another tool, migration has a cost. Evaluate whether the added capabilities justify it.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="migration-from-python-dotenv">
+<h2>Migration from python-dotenv<a class="headerlink" href="#migration-from-python-dotenv" title="Link to this heading"></a></h2>
+<section id="before-python-dotenv">
+<h3>Before (python-dotenv)<a class="headerlink" href="#before-python-dotenv" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="n">DATABASE_HOST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DATABASE_HOST&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+<span class="n">DATABASE_PORT</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DATABASE_PORT&quot;</span><span class="p">,</span> <span class="s2">&quot;5432&quot;</span><span class="p">))</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="after-confii-untyped">
+<h3>After (Confii) — Untyped<a class="headerlink" href="#after-confii-untyped" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnvironmentLoader</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">EnvironmentLoader</span><span class="p">(</span><span class="s2">&quot;APP&quot;</span><span class="p">)])</span>
+
+<span class="c1"># Attribute access with automatic type casting</span>
+<span class="n">database_host</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">host</span>
+<span class="n">database_port</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">port</span>  <span class="c1"># auto-cast to int</span>
+</pre></div>
+</div>
+</section>
+<section id="after-confii-typed-with-config-t">
+<h3>After (Confii) — Typed with <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code><a class="headerlink" href="#after-confii-typed-with-config-t" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnvironmentLoader</span><span class="p">,</span> <span class="n">YamlLoader</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AppConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">database_host</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>
+    <span class="n">database_port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5432</span>
+    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">[</span><span class="n">AppConfig</span><span class="p">](</span>
+    <span class="n">loaders</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">),</span>       <span class="c1"># base config file</span>
+        <span class="n">EnvironmentLoader</span><span class="p">(</span><span class="s2">&quot;APP&quot;</span><span class="p">),</span>         <span class="c1"># env vars override file values</span>
+    <span class="p">],</span>
+    <span class="n">schema</span><span class="o">=</span><span class="n">AppConfig</span><span class="p">,</span>
+    <span class="n">validate_on_load</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Full IDE autocomplete — your editor knows the types</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">database_host</span>   <span class="c1"># IDE knows: str</span>
+<span class="n">port</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">database_port</span>   <span class="c1"># IDE knows: int</span>
+<span class="n">debug</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">debug</span>          <span class="c1"># IDE knows: bool</span>
+</pre></div>
+</div>
+</section>
+<section id="step-by-step-checklist">
+<h3>Step-by-Step Checklist<a class="headerlink" href="#step-by-step-checklist" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Install Confii: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">confii</span></code></p></li>
+<li><p>Convert your <code class="docutils literal notranslate"><span class="pre">.env</span></code> file to YAML (or keep it and use <code class="docutils literal notranslate"><span class="pre">EnvironmentLoader</span></code>)</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">os.getenv()</span></code> calls with <code class="docutils literal notranslate"><span class="pre">config.key</span></code> attribute access</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">load_dotenv()</span></code> calls</p></li>
+<li><p>(Optional) Define a Pydantic model for typed access</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">python-dotenv</span></code> from your dependencies</p></li>
+</ol>
+</section>
+<section id="cli-migration">
+<h3>CLI Migration<a class="headerlink" href="#cli-migration" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>confii<span class="w"> </span>migrate<span class="w"> </span>dotenv<span class="w"> </span>.env<span class="w"> </span>--output<span class="w"> </span>config.yaml
+</pre></div>
+</div>
+<p>This converts <code class="docutils literal notranslate"><span class="pre">KEY=value</span></code> pairs to a flat YAML file. Nested keys using <code class="docutils literal notranslate"><span class="pre">__</span></code> separators (e.g., <code class="docutils literal notranslate"><span class="pre">DATABASE__HOST</span></code>) are converted to nested YAML structures.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="migration-from-python-decouple">
+<h2>Migration from python-decouple<a class="headerlink" href="#migration-from-python-decouple" title="Link to this heading"></a></h2>
+<section id="before-python-decouple">
+<h3>Before (python-decouple)<a class="headerlink" href="#before-python-decouple" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">decouple</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span><span class="p">,</span> <span class="n">Csv</span>
+
+<span class="n">DATABASE_HOST</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;DATABASE_HOST&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+<span class="n">DATABASE_PORT</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;DATABASE_PORT&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">5432</span><span class="p">,</span> <span class="n">cast</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;ALLOWED_HOSTS&quot;</span><span class="p">,</span> <span class="n">cast</span><span class="o">=</span><span class="n">Csv</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>After (Confii) — Untyped<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnvironmentLoader</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">EnvironmentLoader</span><span class="p">(</span><span class="s2">&quot;APP&quot;</span><span class="p">)])</span>
+
+<span class="c1"># Type casting is automatic — no cast= parameter needed</span>
+<span class="n">database_host</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">host</span>
+<span class="n">database_port</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">port</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>After (Confii) — Typed with <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code><a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnvironmentLoader</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AppConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">database_host</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>
+    <span class="n">database_port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5432</span>
+    <span class="n">allowed_hosts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;localhost&quot;</span><span class="p">]</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">[</span><span class="n">AppConfig</span><span class="p">](</span>
+    <span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">EnvironmentLoader</span><span class="p">(</span><span class="s2">&quot;APP&quot;</span><span class="p">)],</span>
+    <span class="n">schema</span><span class="o">=</span><span class="n">AppConfig</span><span class="p">,</span>
+    <span class="n">validate_on_load</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">hosts</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">allowed_hosts</span>  <span class="c1"># IDE knows: List[str]</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>Step-by-Step Checklist<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Install Confii: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">confii</span></code></p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">decouple</span> <span class="pre">import</span> <span class="pre">config</span></code> with Confii setup</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">cast=</span></code> arguments — type casting is automatic, or use a Pydantic schema</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">config(&quot;KEY&quot;)</span></code> calls with <code class="docutils literal notranslate"><span class="pre">config.key</span></code> attribute access</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">python-decouple</span></code> from your dependencies</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="migration-from-omegaconf">
+<h2>Migration from OmegaConf<a class="headerlink" href="#migration-from-omegaconf" title="Link to this heading"></a></h2>
+<p>OmegaConf is widely used in ML/data science pipelines, often alongside Hydra. This section covers standalone OmegaConf usage.</p>
+<section id="loading-yaml-files">
+<h3>Loading YAML files<a class="headerlink" href="#loading-yaml-files" title="Link to this heading"></a></h3>
+<p><strong>Before (OmegaConf):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">omegaconf</span><span class="w"> </span><span class="kn">import</span> <span class="n">OmegaConf</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">)</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">host</span>
+</pre></div>
+</div>
+<p><strong>After (Confii):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">)])</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">host</span>
+</pre></div>
+</div>
+</section>
+<section id="merging-configs">
+<h3>Merging configs<a class="headerlink" href="#merging-configs" title="Link to this heading"></a></h3>
+<p><strong>Before (OmegaConf):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">omegaconf</span><span class="w"> </span><span class="kn">import</span> <span class="n">OmegaConf</span>
+
+<span class="n">base</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;base.yaml&quot;</span><span class="p">)</span>
+<span class="n">overrides</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;overrides.yaml&quot;</span><span class="p">)</span>
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">overrides</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>After (Confii):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span>
+
+<span class="c1"># Later loaders override earlier loaders (deep merge by default)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">loaders</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;base.yaml&quot;</span><span class="p">),</span>
+    <span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;overrides.yaml&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+<p>Confii deep-merges by default. For more control, use <code class="docutils literal notranslate"><span class="pre">merge_strategy</span></code> and <code class="docutils literal notranslate"><span class="pre">merge_strategy_map</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.merge_strategies</span><span class="w"> </span><span class="kn">import</span> <span class="n">MergeStrategy</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span>
+    <span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;base.yaml&quot;</span><span class="p">),</span> <span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;overrides.yaml&quot;</span><span class="p">)],</span>
+    <span class="n">merge_strategy</span><span class="o">=</span><span class="n">MergeStrategy</span><span class="o">.</span><span class="n">DEEP_MERGE</span><span class="p">,</span>
+    <span class="n">merge_strategy_map</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;database.replicas&quot;</span><span class="p">:</span> <span class="n">MergeStrategy</span><span class="o">.</span><span class="n">REPLACE</span><span class="p">,</span>  <span class="c1"># replace list instead of merging</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="converting-to-plain-dict">
+<h3>Converting to plain dict<a class="headerlink" href="#converting-to-plain-dict" title="Link to this heading"></a></h3>
+<p><strong>Before (OmegaConf):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plain</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">to_container</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">resolve</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>After (Confii):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plain</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="variable-interpolation">
+<h3>Variable interpolation<a class="headerlink" href="#variable-interpolation" title="Link to this heading"></a></h3>
+<p>OmegaConf supports <code class="docutils literal notranslate"><span class="pre">${db.host}</span></code> references inside config values. Confii does <strong>not</strong> have cross-key interpolation. It does support environment variable expansion:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># OmegaConf style (NOT supported):</span>
+<span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://${db.host}:${db.port}/mydb&quot;</span>
+
+<span class="c1"># Confii style (environment variable expansion):</span>
+<span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://${DB_HOST}:${DB_PORT}/mydb&quot;</span>
+</pre></div>
+</div>
+<p>If you rely heavily on cross-key interpolation, you have two options:</p>
+<ol class="arabic simple">
+<li><p><strong>Pre-resolve</strong> interpolation before loading (e.g., with a build step)</p></li>
+<li><p><strong>Use environment variables</strong> to share values across config keys</p></li>
+</ol>
+</section>
+<section id="structured-configs-config-t">
+<h3>Structured configs → <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code><a class="headerlink" href="#structured-configs-config-t" title="Link to this heading"></a></h3>
+<p><strong>Before (OmegaConf structured configs):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">omegaconf</span><span class="w"> </span><span class="kn">import</span> <span class="n">OmegaConf</span><span class="p">,</span> <span class="n">MISSING</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DBConfig</span><span class="p">:</span>
+    <span class="n">host</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">MISSING</span>
+    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5432</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AppConfig</span><span class="p">:</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">DBConfig</span> <span class="o">=</span> <span class="n">DBConfig</span><span class="p">()</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">structured</span><span class="p">(</span><span class="n">AppConfig</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">merge_with</span><span class="p">(</span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>After (Confii with Pydantic):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DBConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">host</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5432</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AppConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">DBConfig</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">[</span><span class="n">AppConfig</span><span class="p">](</span>
+    <span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">)],</span>
+    <span class="n">schema</span><span class="o">=</span><span class="n">AppConfig</span><span class="p">,</span>
+    <span class="n">validate_on_load</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">config</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">host</span>   <span class="c1"># IDE knows: str</span>
+<span class="n">config</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">port</span>   <span class="c1"># IDE knows: int</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>Step-by-Step Checklist<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Install Confii: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">confii</span></code></p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">OmegaConf.load()</span></code> with <code class="docutils literal notranslate"><span class="pre">YamlLoader</span></code></p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">OmegaConf.merge()</span></code> with multiple loaders (later overrides earlier)</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">OmegaConf.to_container()</span></code> with <code class="docutils literal notranslate"><span class="pre">config.to_dict()</span></code></p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">&#64;dataclass</span></code> structured configs with Pydantic <code class="docutils literal notranslate"><span class="pre">BaseModel</span></code> + <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></p></li>
+<li><p>Refactor any <code class="docutils literal notranslate"><span class="pre">${key.ref}</span></code> interpolation to use env vars or pre-resolve</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">omegaconf</span></code> from your dependencies</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="migration-from-dynaconf">
+<h2>Migration from Dynaconf<a class="headerlink" href="#migration-from-dynaconf" title="Link to this heading"></a></h2>
+<section id="basic-usage">
+<h3>Basic usage<a class="headerlink" href="#basic-usage" title="Link to this heading"></a></h3>
+<p><strong>Before (Dynaconf):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dynaconf</span><span class="w"> </span><span class="kn">import</span> <span class="n">Settings</span>
+
+<span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">(</span>
+    <span class="n">ENV_FOR_DYNACONF</span><span class="o">=</span><span class="s2">&quot;production&quot;</span><span class="p">,</span>
+    <span class="n">SETTINGS_FILE_FOR_DYNACONF</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;settings.yaml&quot;</span><span class="p">,</span> <span class="s2">&quot;production.yaml&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">database_host</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">DATABASE</span><span class="o">.</span><span class="n">HOST</span>
+</pre></div>
+</div>
+<p><strong>After (Confii) — Untyped:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span>
+    <span class="n">env</span><span class="o">=</span><span class="s2">&quot;production&quot;</span><span class="p">,</span>
+    <span class="n">loaders</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;settings.yaml&quot;</span><span class="p">),</span>
+        <span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;production.yaml&quot;</span><span class="p">),</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">database_host</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">host</span>
+</pre></div>
+</div>
+</section>
+<section id="environment-switching">
+<h3>Environment switching<a class="headerlink" href="#environment-switching" title="Link to this heading"></a></h3>
+<p><strong>Before (Dynaconf):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dynaconf</span><span class="w"> </span><span class="kn">import</span> <span class="n">Settings</span>
+
+<span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">()</span>
+
+<span class="c1"># Switch environment at runtime</span>
+<span class="n">settings</span><span class="o">.</span><span class="n">from_env</span><span class="p">(</span><span class="s2">&quot;production&quot;</span><span class="p">)</span>
+
+<span class="c1"># Or use decorator</span>
+<span class="nd">@settings</span><span class="o">.</span><span class="n">use_env</span><span class="p">(</span><span class="s2">&quot;production&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_db_url</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">settings</span><span class="o">.</span><span class="n">DATABASE_URL</span>
+</pre></div>
+</div>
+<p><strong>After (Confii):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span>
+
+<span class="c1"># Set environment at construction time</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">env</span><span class="o">=</span><span class="s2">&quot;production&quot;</span><span class="p">,</span> <span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;settings.yaml&quot;</span><span class="p">)])</span>
+
+<span class="c1"># Or load env vars with a prefix</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">env_prefix</span><span class="o">=</span><span class="s2">&quot;MYAPP&quot;</span><span class="p">,</span> <span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;settings.yaml&quot;</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>Confii sets the environment at construction time. If you need multiple environments simultaneously, create multiple <code class="docutils literal notranslate"><span class="pre">Config</span></code> instances.</p>
+</section>
+<section id="dynaconf-vault-integration-confii-secret-stores">
+<h3>Dynaconf Vault integration → Confii secret stores<a class="headerlink" href="#dynaconf-vault-integration-confii-secret-stores" title="Link to this heading"></a></h3>
+<p><strong>Before (Dynaconf):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># settings.yaml</span>
+<span class="c1"># VAULT_ENABLED_FOR_DYNACONF: true</span>
+<span class="c1"># VAULT_URL_FOR_DYNACONF: https://vault.example.com</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dynaconf</span><span class="w"> </span><span class="kn">import</span> <span class="n">Settings</span>
+<span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">()</span>
+<span class="n">db_password</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">DATABASE_PASSWORD</span>  <span class="c1"># reads from Vault</span>
+</pre></div>
+</div>
+<p><strong>After (Confii):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.secret_stores</span><span class="w"> </span><span class="kn">import</span> <span class="n">HashiCorpVault</span><span class="p">,</span> <span class="n">SecretResolver</span>
+
+<span class="n">vault</span> <span class="o">=</span> <span class="n">HashiCorpVault</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://vault.example.com&quot;</span><span class="p">,</span>
+    <span class="n">auth_method</span><span class="o">=</span><span class="s2">&quot;approle&quot;</span><span class="p">,</span>             <span class="c1"># or token, kubernetes, ldap, oidc, aws, azure, gcp, jwt</span>
+    <span class="n">role_id</span><span class="o">=</span><span class="s2">&quot;my-role-id&quot;</span><span class="p">,</span>
+    <span class="n">secret_id</span><span class="o">=</span><span class="s2">&quot;my-secret-id&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span>
+    <span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">)],</span>
+    <span class="n">secret_resolver</span><span class="o">=</span><span class="n">SecretResolver</span><span class="p">(</span><span class="n">vault</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Confii supports <strong>10 Vault auth methods</strong> (token, AppRole, Kubernetes, LDAP, OIDC, AWS IAM, Azure, GCP, JWT, userpass) compared to Dynaconf’s token-based auth. It also supports AWS Secrets Manager, Azure Key Vault, GCP Secret Manager, and multi-store fallback via <code class="docutils literal notranslate"><span class="pre">MultiSecretStore</span></code>.</p>
+<p>In your config files, reference secrets with the <code class="docutils literal notranslate"><span class="pre">${secret:path}</span></code> syntax:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">database</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${secret:db/password}&quot;</span>
+<span class="w">  </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${secret:services/api-key}&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="dynaconf-validators-pydantic-with-config-t">
+<h3>Dynaconf validators → Pydantic with <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code><a class="headerlink" href="#dynaconf-validators-pydantic-with-config-t" title="Link to this heading"></a></h3>
+<p><strong>Before (Dynaconf):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dynaconf</span><span class="w"> </span><span class="kn">import</span> <span class="n">Settings</span><span class="p">,</span> <span class="n">Validator</span>
+
+<span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">(</span>
+    <span class="n">validators</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">Validator</span><span class="p">(</span><span class="s2">&quot;DATABASE.HOST&quot;</span><span class="p">,</span> <span class="n">must_exist</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">Validator</span><span class="p">(</span><span class="s2">&quot;DATABASE.PORT&quot;</span><span class="p">,</span> <span class="n">gte</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">lte</span><span class="o">=</span><span class="mi">65535</span><span class="p">),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>After (Confii):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DatabaseConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">host</span><span class="p">:</span> <span class="nb">str</span>                                          <span class="c1"># required (must exist)</span>
+    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">ge</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">65535</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">5432</span><span class="p">)</span> <span class="c1"># range validation</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AppConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">database</span><span class="p">:</span> <span class="n">DatabaseConfig</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">[</span><span class="n">AppConfig</span><span class="p">](</span>
+    <span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;settings.yaml&quot;</span><span class="p">)],</span>
+    <span class="n">schema</span><span class="o">=</span><span class="n">AppConfig</span><span class="p">,</span>
+    <span class="n">validate_on_load</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">strict_validation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># raise on validation failure</span>
+<span class="p">)</span>
+
+<span class="n">config</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">host</span>  <span class="c1"># IDE knows: str</span>
+<span class="n">config</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">port</span>  <span class="c1"># IDE knows: int</span>
+</pre></div>
+</div>
+<p>Pydantic gives you richer validation (regex patterns, custom validators, nested models, union types) than Dynaconf’s built-in validators.</p>
+</section>
+<section id="id5">
+<h3>Step-by-Step Checklist<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Install Confii: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">confii</span></code></p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">dynaconf</span> <span class="pre">import</span> <span class="pre">Settings</span></code> with <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">confii</span> <span class="pre">import</span> <span class="pre">Config</span></code></p></li>
+<li><p>Convert <code class="docutils literal notranslate"><span class="pre">Settings(ENV_FOR_DYNACONF=&quot;x&quot;)</span></code> to <code class="docutils literal notranslate"><span class="pre">Config(env=&quot;x&quot;)</span></code></p></li>
+<li><p>Convert <code class="docutils literal notranslate"><span class="pre">SETTINGS_FILE_FOR_DYNACONF=[&quot;a.yaml&quot;]</span></code> to <code class="docutils literal notranslate"><span class="pre">loaders=[YamlLoader(&quot;a.yaml&quot;)]</span></code></p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">settings.KEY</span></code> with <code class="docutils literal notranslate"><span class="pre">config.key</span></code> (Confii is case-sensitive by default)</p></li>
+<li><p>If using Dynaconf Vault: set up <code class="docutils literal notranslate"><span class="pre">HashiCorpVault</span></code> + <code class="docutils literal notranslate"><span class="pre">SecretResolver</span></code></p></li>
+<li><p>If using Dynaconf validators: convert to a Pydantic <code class="docutils literal notranslate"><span class="pre">BaseModel</span></code></p></li>
+<li><p>Remove Dynaconf env vars (<code class="docutils literal notranslate"><span class="pre">*_FOR_DYNACONF</span></code>) from your environment</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">dynaconf</span></code> from your dependencies</p></li>
+</ol>
+</section>
+<section id="id6">
+<h3>CLI Migration<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>confii<span class="w"> </span>migrate<span class="w"> </span>dynaconf<span class="w"> </span>settings.yaml<span class="w"> </span>--output<span class="w"> </span>config.yaml
+</pre></div>
+</div>
+<p>This parses the YAML (or JSON) file and outputs a clean Confii-compatible file. You will still need to manually update your Python code.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="migration-from-hydra">
+<h2>Migration from Hydra<a class="headerlink" href="#migration-from-hydra" title="Link to this heading"></a></h2>
+<section id="removing-the-hydra-main-decorator">
+<h3>Removing the <code class="docutils literal notranslate"><span class="pre">&#64;hydra.main()</span></code> decorator<a class="headerlink" href="#removing-the-hydra-main-decorator" title="Link to this heading"></a></h3>
+<p><strong>Before (Hydra):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">hydra</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">omegaconf</span><span class="w"> </span><span class="kn">import</span> <span class="n">DictConfig</span>
+
+<span class="nd">@hydra</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="s2">&quot;conf&quot;</span><span class="p">,</span> <span class="n">config_name</span><span class="o">=</span><span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="n">version_base</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">host</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>After (Confii):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;conf/config.yaml&quot;</span><span class="p">)])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">host</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No decorator, no special entry point, no working directory changes. Config is just a regular object you create when you need it.</p>
+</section>
+<section id="config-groups-include-composition">
+<h3>Config groups → <code class="docutils literal notranslate"><span class="pre">_include</span></code> composition<a class="headerlink" href="#config-groups-include-composition" title="Link to this heading"></a></h3>
+<p><strong>Before (Hydra) — <code class="docutils literal notranslate"><span class="pre">conf/config.yaml</span></code>:</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+
+<span class="nt">app</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp</span>
+</pre></div>
+</div>
+<p>With separate files <code class="docutils literal notranslate"><span class="pre">conf/database/postgres.yaml</span></code> and <code class="docutils literal notranslate"><span class="pre">conf/server/nginx.yaml</span></code>.</p>
+<p><strong>After (Confii) — <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code>:</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">_include</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conf/database/postgres.yaml</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conf/server/nginx.yaml</span>
+
+<span class="nt">app</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp</span>
+</pre></div>
+</div>
+<p>Or using <code class="docutils literal notranslate"><span class="pre">_defaults</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">_defaults</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+
+<span class="nt">app</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp</span>
+</pre></div>
+</div>
+<p>Confii processes <code class="docutils literal notranslate"><span class="pre">_include</span></code> and <code class="docutils literal notranslate"><span class="pre">_defaults</span></code> directives to compose configs from multiple fragments, with cycle detection for recursive includes.</p>
+</section>
+<section id="defaults-list-defaults-directive">
+<h3><code class="docutils literal notranslate"><span class="pre">defaults:</span></code> list → <code class="docutils literal notranslate"><span class="pre">_defaults:</span></code> directive<a class="headerlink" href="#defaults-list-defaults-directive" title="Link to this heading"></a></h3>
+<p>The mapping is straightforward — rename the key:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Hydra</p></th>
+<th class="head"><p>Confii</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">defaults:</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">_defaults:</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">database:</span> <span class="pre">postgres</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">database:</span> <span class="pre">postgres</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">override</span> <span class="pre">database:</span> <span class="pre">mysql</span></code></p></td>
+<td><p>Not supported — use a separate override loader</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hydra-utils-instantiate-no-equivalent">
+<h3><code class="docutils literal notranslate"><span class="pre">hydra.utils.instantiate()</span></code> — No equivalent<a class="headerlink" href="#hydra-utils-instantiate-no-equivalent" title="Link to this heading"></a></h3>
+<p>Hydra can instantiate Python objects from config:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">model</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">_target_</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">torch.nn.Linear</span>
+<span class="w">  </span><span class="nt">in_features</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">128</span>
+<span class="w">  </span><span class="nt">out_features</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+</pre></div>
+</div>
+<p>Confii does <strong>not</strong> provide object instantiation from config. This is a deliberate design choice — config loading and object construction are separate concerns. If you need this pattern, instantiate objects in your application code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">)])</span>
+
+<span class="c1"># Instantiate manually</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span>
+    <span class="n">in_features</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">in_features</span><span class="p">,</span>
+    <span class="n">out_features</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">out_features</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="multirun-sweep-no-equivalent">
+<h3>Multirun/sweep — No equivalent<a class="headerlink" href="#multirun-sweep-no-equivalent" title="Link to this heading"></a></h3>
+<p>Hydra’s <code class="docutils literal notranslate"><span class="pre">--multirun</span></code> feature for hyperparameter sweeps:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>train.py<span class="w"> </span>--multirun<span class="w"> </span><span class="nv">learning_rate</span><span class="o">=</span><span class="m">0</span>.001,0.01,0.1
+</pre></div>
+</div>
+<p>Confii does not provide experiment sweep functionality. Use an external tool (Optuna, Weights &amp; Biases, Ray Tune) for hyperparameter sweeps and pass config values via environment variables or separate config files.</p>
+</section>
+<section id="id7">
+<h3>Structured configs → <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code><a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p><strong>Before (Hydra + OmegaConf):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hydra.core.config_store</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigStore</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DBConfig</span><span class="p">:</span>
+    <span class="n">host</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>
+    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5432</span>
+
+<span class="n">cs</span> <span class="o">=</span> <span class="n">ConfigStore</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+<span class="n">cs</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;db&quot;</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="n">DBConfig</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>After (Confii):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DBConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">host</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>
+    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5432</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AppConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">DBConfig</span> <span class="o">=</span> <span class="n">DBConfig</span><span class="p">()</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">[</span><span class="n">AppConfig</span><span class="p">](</span>
+    <span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">)],</span>
+    <span class="n">schema</span><span class="o">=</span><span class="n">AppConfig</span><span class="p">,</span>
+    <span class="n">validate_on_load</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">config</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">host</span>   <span class="c1"># IDE knows: str</span>
+<span class="n">config</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">port</span>   <span class="c1"># IDE knows: int</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h3>Step-by-Step Checklist<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Install Confii: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">confii</span></code></p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">&#64;hydra.main()</span></code> decorator from your entry point</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">initialize()</span></code> / <code class="docutils literal notranslate"><span class="pre">compose()</span></code> with <code class="docutils literal notranslate"><span class="pre">Config(loaders=[...])</span></code></p></li>
+<li><p>Rename <code class="docutils literal notranslate"><span class="pre">defaults:</span></code> to <code class="docutils literal notranslate"><span class="pre">_defaults:</span></code> in your YAML files (or use <code class="docutils literal notranslate"><span class="pre">_include:</span></code>)</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">cfg.key</span></code> with <code class="docutils literal notranslate"><span class="pre">config.key</span></code> (same attribute access pattern)</p></li>
+<li><p>Convert <code class="docutils literal notranslate"><span class="pre">&#64;dataclass</span></code> structured configs to Pydantic <code class="docutils literal notranslate"><span class="pre">BaseModel</span></code> (optional)</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">hydra.utils.instantiate()</span></code> with manual object construction</p></li>
+<li><p>Replace multirun/sweep with an external tool</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">hydra-core</span></code> and <code class="docutils literal notranslate"><span class="pre">omegaconf</span></code> from your dependencies</p></li>
+</ol>
+</section>
+<section id="id9">
+<h3>CLI Migration<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>confii<span class="w"> </span>migrate<span class="w"> </span>hydra<span class="w"> </span>conf/config.yaml<span class="w"> </span>--output<span class="w"> </span>config.yaml
+</pre></div>
+</div>
+<p>This strips Hydra-specific keys (<code class="docutils literal notranslate"><span class="pre">defaults</span></code>, <code class="docutils literal notranslate"><span class="pre">hydra</span></code>) from the YAML and outputs a clean file. Config group references are <strong>not</strong> auto-resolved — you will need to convert them to <code class="docutils literal notranslate"><span class="pre">_include</span></code> directives manually.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="migration-from-pydantic-settings">
+<h2>Migration from Pydantic Settings<a class="headerlink" href="#migration-from-pydantic-settings" title="Link to this heading"></a></h2>
+<section id="the-limitation-of-pydantic-settings">
+<h3>The limitation of pydantic-settings<a class="headerlink" href="#the-limitation-of-pydantic-settings" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">pydantic-settings</span></code> validates config and gives you typed access, but it can only load from:</p>
+<ul class="simple">
+<li><p>Environment variables</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.env</span></code> files</p></li>
+<li><p>(with extras) Azure Key Vault, AWS Secrets Manager</p></li>
+</ul>
+<p>It cannot load from YAML, JSON, TOML, INI, S3, SSM, Git repos, or HTTP endpoints.</p>
+</section>
+<section id="before-pydantic-settings">
+<h3>Before (pydantic-settings)<a class="headerlink" href="#before-pydantic-settings" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic_settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseSettings</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Settings</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
+    <span class="n">database_host</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>
+    <span class="n">database_port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5432</span>
+    <span class="n">redis_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;redis://localhost:6379&quot;</span>
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">:</span>
+        <span class="n">env_prefix</span> <span class="o">=</span> <span class="s2">&quot;APP_&quot;</span>
+        <span class="n">env_file</span> <span class="o">=</span> <span class="s2">&quot;.env&quot;</span>
+
+<span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">()</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">database_host</span>   <span class="c1"># IDE knows: str</span>
+</pre></div>
+</div>
+</section>
+<section id="after-confii-same-typing-more-sources">
+<h3>After (Confii) — Same typing, more sources<a class="headerlink" href="#after-confii-same-typing-more-sources" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span><span class="p">,</span> <span class="n">EnvironmentLoader</span><span class="p">,</span> <span class="n">SSMLoader</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Settings</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">database_host</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>
+    <span class="n">database_port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5432</span>
+    <span class="n">redis_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;redis://localhost:6379&quot;</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">[</span><span class="n">Settings</span><span class="p">](</span>
+    <span class="n">loaders</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">),</span>          <span class="c1"># base config from file</span>
+        <span class="n">SSMLoader</span><span class="p">(</span><span class="s2">&quot;/myapp/production&quot;</span><span class="p">),</span>      <span class="c1"># AWS SSM Parameter Store</span>
+        <span class="n">EnvironmentLoader</span><span class="p">(</span><span class="s2">&quot;APP&quot;</span><span class="p">),</span>            <span class="c1"># env vars override everything</span>
+    <span class="p">],</span>
+    <span class="n">schema</span><span class="o">=</span><span class="n">Settings</span><span class="p">,</span>
+    <span class="n">validate_on_load</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">strict_validation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Same typed access as pydantic-settings</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">database_host</span>   <span class="c1"># IDE knows: str</span>
+<span class="n">port</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">database_port</span>   <span class="c1"># IDE knows: int</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">redis_url</span>        <span class="c1"># IDE knows: str</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Config[T].typed</span></code> property is the key feature: you get the same Pydantic-validated, IDE-aware typed access that pydantic-settings provides, but your config can come from any combination of sources.</p>
+</section>
+<section id="what-changes-what-stays-the-same">
+<h3>What changes, what stays the same<a class="headerlink" href="#what-changes-what-stays-the-same" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>pydantic-settings</p></th>
+<th class="head"><p>Confii with <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Pydantic model</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BaseSettings</span></code> (subclass)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BaseModel</span></code> (standard)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Typed access</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">settings.field</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">config.typed.field</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Env var loading</strong></p></td>
+<td><p>Built-in</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EnvironmentLoader(&quot;PREFIX&quot;)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>File loading</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.env</span></code> only</p></td>
+<td><p>YAML, JSON, TOML, INI</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cloud sources</strong></p></td>
+<td><p>Limited extras</p></td>
+<td><p>S3, SSM, Azure Blob, GCP Storage, HTTP, Git</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Secret stores</strong></p></td>
+<td><p>Limited extras</p></td>
+<td><p>AWS SM, Azure KV, GCP SM, HashiCorp Vault (10 auth methods)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hot reload</strong></p></td>
+<td><p>No</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dynamic_reloading=True</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Source tracking</strong></p></td>
+<td><p>No</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">config.get_source(&quot;key&quot;)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id10">
+<h3>Step-by-Step Checklist<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Install Confii: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">confii</span></code></p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">BaseSettings</span></code> to <code class="docutils literal notranslate"><span class="pre">BaseModel</span></code> (remove <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Config</span></code> inner class)</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">Config[YourModel]</span></code> instance with your loaders</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">settings.field</span></code> with <code class="docutils literal notranslate"><span class="pre">config.typed.field</span></code></p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">env_prefix</span></code> in <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Config</span></code> with <code class="docutils literal notranslate"><span class="pre">EnvironmentLoader(&quot;PREFIX&quot;)</span></code> or <code class="docutils literal notranslate"><span class="pre">env_prefix=&quot;PREFIX&quot;</span></code></p></li>
+<li><p>(Optional) Add file loaders, SSM, secret stores</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">pydantic-settings</span></code> from your dependencies (keep <code class="docutils literal notranslate"><span class="pre">pydantic</span></code>)</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="automated-migration-cli">
+<h2>Automated Migration (CLI)<a class="headerlink" href="#automated-migration-cli" title="Link to this heading"></a></h2>
+<p>Confii provides a CLI tool that converts config <strong>files</strong> from other formats:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert .env to YAML</span>
+confii<span class="w"> </span>migrate<span class="w"> </span>dotenv<span class="w"> </span>.env<span class="w"> </span>--output<span class="w"> </span>config.yaml
+
+<span class="c1"># Convert Dynaconf settings file</span>
+confii<span class="w"> </span>migrate<span class="w"> </span>dynaconf<span class="w"> </span>settings.yaml<span class="w"> </span>--output<span class="w"> </span>config.yaml
+
+<span class="c1"># Convert Hydra config (strips Hydra-specific keys)</span>
+confii<span class="w"> </span>migrate<span class="w"> </span>hydra<span class="w"> </span>conf/config.yaml<span class="w"> </span>--output<span class="w"> </span>config.yaml
+</pre></div>
+</div>
+<section id="what-the-cli-does">
+<h3>What the CLI does<a class="headerlink" href="#what-the-cli-does" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>dotenv/env:</strong> Parses <code class="docutils literal notranslate"><span class="pre">KEY=value</span></code> pairs and converts to YAML. Nested keys using <code class="docutils literal notranslate"><span class="pre">__</span></code> separators (e.g., <code class="docutils literal notranslate"><span class="pre">DATABASE__HOST=localhost</span></code>) become nested YAML structures.</p></li>
+<li><p><strong>dynaconf:</strong> Parses the YAML/JSON settings file and outputs it in the target format. No structural changes needed for most files.</p></li>
+<li><p><strong>hydra:</strong> Parses the YAML config, strips <code class="docutils literal notranslate"><span class="pre">defaults:</span></code> and <code class="docutils literal notranslate"><span class="pre">hydra:</span></code> keys, and outputs the remaining config.</p></li>
+</ul>
+</section>
+<section id="what-the-cli-does-not-do">
+<h3>What the CLI does NOT do<a class="headerlink" href="#what-the-cli-does-not-do" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>It does <strong>not</strong> rewrite your Python code. You still need to update <code class="docutils literal notranslate"><span class="pre">import</span></code> statements and config access patterns manually.</p></li>
+<li><p>It does <strong>not</strong> resolve Hydra config group references. <code class="docutils literal notranslate"><span class="pre">_defaults</span></code> entries need manual conversion to <code class="docutils literal notranslate"><span class="pre">_include</span></code> paths.</p></li>
+<li><p>It does <strong>not</strong> migrate secrets or environment-specific logic.</p></li>
+</ul>
+</section>
+<section id="output-format-options">
+<h3>Output format options<a class="headerlink" href="#output-format-options" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Output as JSON instead of YAML</span>
+confii<span class="w"> </span>migrate<span class="w"> </span>dotenv<span class="w"> </span>.env<span class="w"> </span>--output<span class="w"> </span>config.json<span class="w"> </span>--target-format<span class="w"> </span>json
+
+<span class="c1"># Output as TOML</span>
+confii<span class="w"> </span>migrate<span class="w"> </span>dotenv<span class="w"> </span>.env<span class="w"> </span>--output<span class="w"> </span>config.toml<span class="w"> </span>--target-format<span class="w"> </span>toml
+
+<span class="c1"># Print to stdout (no --output flag)</span>
+confii<span class="w"> </span>migrate<span class="w"> </span>dotenv<span class="w"> </span>.env
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="feature-comparison">
+<h2>Feature Comparison<a class="headerlink" href="#feature-comparison" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>python-dotenv</p></th>
+<th class="head"><p>python-decouple</p></th>
+<th class="head"><p>OmegaConf</p></th>
+<th class="head"><p>Dynaconf</p></th>
+<th class="head"><p>Hydra</p></th>
+<th class="head"><p>pydantic-settings</p></th>
+<th class="head"><p><strong>Confii</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Multiple file formats</strong></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>YAML</p></td>
+<td><p>YAML, JSON, TOML, INI</p></td>
+<td><p>YAML</p></td>
+<td><p>.env</p></td>
+<td><p>YAML, JSON, TOML, INI</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Environment variables</strong></p></td>
+<td><p>Load to <code class="docutils literal notranslate"><span class="pre">os.environ</span></code></p></td>
+<td><p>Read from env</p></td>
+<td><p>-</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via plugin)</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Type casting</strong></p></td>
+<td><p>-</p></td>
+<td><p>Manual <code class="docutils literal notranslate"><span class="pre">cast=</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Pydantic</p></td>
+<td><p>Auto + Pydantic</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Schema validation</strong></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Structured configs</p></td>
+<td><p>Basic validators</p></td>
+<td><p>Structured configs</p></td>
+<td><p>Pydantic</p></td>
+<td><p>Pydantic + JSON Schema</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Typed IDE access</strong></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Limited</p></td>
+<td><p>-</p></td>
+<td><p>Via structured</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (<code class="docutils literal notranslate"><span class="pre">Config[T].typed</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Hot reload</strong></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Yes</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Source tracking</strong></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Secret stores</strong></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>⚠️ Vault (token auth)</p></td>
+<td><p>-</p></td>
+<td><p>⚠️ Limited extras</p></td>
+<td><p>AWS SM, Azure KV, GCP SM, Vault (10 auth methods)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cloud config sources</strong></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>⚠️ Redis, Vault</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>S3, SSM, Azure Blob, GCP Storage, HTTP, Git</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Config composition</strong></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Merge</p></td>
+<td><p>⚠️ Basic</p></td>
+<td><p>Yes</p></td>
+<td><p>-</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">_include</span></code>, <code class="docutils literal notranslate"><span class="pre">_defaults</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Config diffing</strong></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Variable interpolation</strong></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">${key.ref}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;format</span> <span class="pre">{this.key}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">${key.ref}</span></code></p></td>
+<td><p>-</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">${ENV_VAR}</span></code> only</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Multirun/sweep</strong></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Yes</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Object instantiation</strong></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">instantiate()</span></code></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+</tbody>
+</table>
+<p>Legend: <strong>Yes</strong> = full support, <strong>⚠️</strong> = partial/limited support, <strong>-</strong> = not supported</p>
+</section>
+<hr class="docutils" />
+<section id="common-migration-patterns">
+<h2>Common Migration Patterns<a class="headerlink" href="#common-migration-patterns" title="Link to this heading"></a></h2>
+<section id="pattern-1-environment-variables-only">
+<h3>Pattern 1: Environment variables only<a class="headerlink" href="#pattern-1-environment-variables-only" title="Link to this heading"></a></h3>
+<p><strong>Before:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_HOST&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+<span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_PORT&quot;</span><span class="p">,</span> <span class="s2">&quot;5432&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>After:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnvironmentLoader</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">EnvironmentLoader</span><span class="p">(</span><span class="s2">&quot;DB&quot;</span><span class="p">)])</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">host</span>
+<span class="n">port</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">port</span>
+</pre></div>
+</div>
+</section>
+<section id="pattern-2-file-environment-overrides">
+<h3>Pattern 2: File + environment overrides<a class="headerlink" href="#pattern-2-file-environment-overrides" title="Link to this heading"></a></h3>
+<p><strong>Before:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;config.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">file_config</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_HOST&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">file_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;database&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;host&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>After:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">JsonLoader</span><span class="p">,</span> <span class="n">EnvironmentLoader</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">loaders</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">JsonLoader</span><span class="p">(</span><span class="s2">&quot;config.json&quot;</span><span class="p">),</span>
+    <span class="n">EnvironmentLoader</span><span class="p">(</span><span class="s2">&quot;DB&quot;</span><span class="p">),</span>    <span class="c1"># env vars override file values</span>
+<span class="p">])</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">host</span>
+</pre></div>
+</div>
+</section>
+<section id="pattern-3-multiple-environments">
+<h3>Pattern 3: Multiple environments<a class="headerlink" href="#pattern-3-multiple-environments" title="Link to this heading"></a></h3>
+<p><strong>Before:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;ENV&quot;</span><span class="p">,</span> <span class="s2">&quot;development&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">env</span> <span class="o">==</span> <span class="s2">&quot;production&quot;</span><span class="p">:</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;prod.json&quot;</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dev.json&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>After:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span>
+    <span class="n">env</span><span class="o">=</span><span class="s2">&quot;production&quot;</span><span class="p">,</span>
+    <span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">)],</span>  <span class="c1"># contains environment sections</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Your <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> uses environment sections:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">default</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">database</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span>
+
+<span class="nt">production</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">database</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db.prod.example.com</span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span>
+</pre></div>
+</div>
+</section>
+<section id="pattern-4-secrets-from-vault-config-from-files">
+<h3>Pattern 4: Secrets from Vault + config from files<a class="headerlink" href="#pattern-4-secrets-from-vault-config-from-files" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span><span class="p">,</span> <span class="n">EnvironmentLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.secret_stores</span><span class="w"> </span><span class="kn">import</span> <span class="n">HashiCorpVault</span><span class="p">,</span> <span class="n">SecretResolver</span>
+
+<span class="n">vault</span> <span class="o">=</span> <span class="n">HashiCorpVault</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://vault.example.com&quot;</span><span class="p">,</span>
+    <span class="n">auth_method</span><span class="o">=</span><span class="s2">&quot;kubernetes&quot;</span><span class="p">,</span>
+    <span class="n">role</span><span class="o">=</span><span class="s2">&quot;my-app&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span>
+    <span class="n">env</span><span class="o">=</span><span class="s2">&quot;production&quot;</span><span class="p">,</span>
+    <span class="n">loaders</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">),</span>
+        <span class="n">EnvironmentLoader</span><span class="p">(</span><span class="s2">&quot;APP&quot;</span><span class="p">),</span>
+    <span class="p">],</span>
+    <span class="n">secret_resolver</span><span class="o">=</span><span class="n">SecretResolver</span><span class="p">(</span><span class="n">vault</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># In config.yaml:</span>
+<span class="c1">#   database:</span>
+<span class="c1">#     password: &quot;${secret:db/password}&quot;</span>
+<span class="n">db_password</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">password</span>  <span class="c1"># resolved from Vault at load time</span>
+</pre></div>
+</div>
+</section>
+<section id="pattern-5-builder-pattern-for-complex-setups">
+<h3>Pattern 5: Builder pattern for complex setups<a class="headerlink" href="#pattern-5-builder-pattern-for-complex-setups" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span><span class="p">,</span> <span class="n">EnvironmentLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.secret_stores</span><span class="w"> </span><span class="kn">import</span> <span class="n">AWSSecretsManager</span><span class="p">,</span> <span class="n">SecretResolver</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="o">.</span><span class="n">builder</span><span class="p">()</span> \
+    <span class="o">.</span><span class="n">with_env</span><span class="p">(</span><span class="s2">&quot;production&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">add_loader</span><span class="p">(</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;base.yaml&quot;</span><span class="p">))</span> \
+    <span class="o">.</span><span class="n">add_loader</span><span class="p">(</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;production.yaml&quot;</span><span class="p">))</span> \
+    <span class="o">.</span><span class="n">add_loader</span><span class="p">(</span><span class="n">EnvironmentLoader</span><span class="p">(</span><span class="s2">&quot;APP&quot;</span><span class="p">))</span> \
+    <span class="o">.</span><span class="n">with_secrets</span><span class="p">(</span><span class="n">SecretResolver</span><span class="p">(</span><span class="n">AWSSecretsManager</span><span class="p">(</span><span class="n">region_name</span><span class="o">=</span><span class="s2">&quot;us-east-1&quot;</span><span class="p">)))</span> \
+    <span class="o">.</span><span class="n">enable_dynamic_reloading</span><span class="p">()</span> \
+    <span class="o">.</span><span class="n">enable_debug</span><span class="p">()</span> \
+    <span class="o">.</span><span class="n">build</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="post-migration-checklist">
+<h2>Post-Migration Checklist<a class="headerlink" href="#post-migration-checklist" title="Link to this heading"></a></h2>
+<p>After migration, take advantage of Confii features:</p>
+<section id="validate-your-configuration">
+<h3>1. Validate your configuration<a class="headerlink" href="#validate-your-configuration" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>confii<span class="w"> </span>validate<span class="w"> </span>production<span class="w"> </span>--loader<span class="w"> </span>yaml:config.yaml
+</pre></div>
+</div>
+</section>
+<section id="enable-schema-validation">
+<h3>2. Enable schema validation<a class="headerlink" href="#enable-schema-validation" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">schema</span><span class="o">=</span><span class="n">MySettings</span><span class="p">,</span> <span class="n">validate_on_load</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">strict_validation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="set-up-hot-reloading-if-needed">
+<h3>3. Set up hot reloading (if needed)<a class="headerlink" href="#set-up-hot-reloading-if-needed" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">dynamic_reloading</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">)])</span>
+
+<span class="c1"># Register a callback for config changes</span>
+<span class="n">config</span><span class="o">.</span><span class="n">on_change</span><span class="p">(</span><span class="k">lambda</span> <span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Config changed: </span><span class="si">{</span><span class="n">old</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">new</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="integrate-secret-stores">
+<h3>4. Integrate secret stores<a class="headerlink" href="#integrate-secret-stores" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii.secret_stores</span><span class="w"> </span><span class="kn">import</span> <span class="n">AWSSecretsManager</span><span class="p">,</span> <span class="n">SecretResolver</span>
+
+<span class="n">store</span> <span class="o">=</span> <span class="n">AWSSecretsManager</span><span class="p">(</span><span class="n">region_name</span><span class="o">=</span><span class="s2">&quot;us-east-1&quot;</span><span class="p">)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">secret_resolver</span><span class="o">=</span><span class="n">SecretResolver</span><span class="p">(</span><span class="n">store</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="use-the-debug-tools">
+<h3>5. Use the debug tools<a class="headerlink" href="#use-the-debug-tools" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lint config for issues</span>
+confii<span class="w"> </span>lint<span class="w"> </span>production<span class="w"> </span>--loader<span class="w"> </span>yaml:config.yaml
+
+<span class="c1"># Debug key resolution</span>
+confii<span class="w"> </span>debug<span class="w"> </span>production<span class="w"> </span>--key<span class="o">=</span>database.host
+
+<span class="c1"># Explain where a value came from</span>
+confii<span class="w"> </span>explain<span class="w"> </span>production<span class="w"> </span>--key<span class="o">=</span>database.host
+</pre></div>
+</div>
+</section>
+<section id="freeze-config-in-production">
+<h3>6. Freeze config in production<a class="headerlink" href="#freeze-config-in-production" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">)])</span>
+<span class="n">config</span><span class="o">.</span><span class="n">freeze</span><span class="p">()</span>  <span class="c1"># prevents set() and reload() — fully thread-safe</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="getting-help">
+<h2>Getting Help<a class="headerlink" href="#getting-help" title="Link to this heading"></a></h2>
+<p>If you encounter issues during migration:</p>
+<ol class="arabic simple">
+<li><p><strong>Check the CLI debug tools</strong> (see above)</p></li>
+<li><p><strong>Check the <a class="reference external" href="https://github.com/confiify/confii#readme">documentation</a></strong> for API details</p></li>
+<li><p><strong>File an issue</strong> on GitHub with your before/after code and the error you see</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vault_authentication.html" class="btn btn-neutral float-left" title="Summary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, confiify.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
