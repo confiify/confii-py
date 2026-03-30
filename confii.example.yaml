@@ -1,0 +1,143 @@
+# confii.yaml — Confii Self-Configuration
+# ====================================================
+# Place this file in your project root. All settings are optional.
+# Confii searches for: confii.yaml, .confii.yaml,
+# confii.json, confii.toml (and .yml variants).
+#
+# With this file, your code can be as simple as:
+#
+#   from confii import Config
+#   config = Config()   # Everything configured from this file
+#
+
+# === Environment ===
+default_environment: development     # Default env when none specified
+env_switcher: APP_ENV                # Env var that controls active environment
+
+# === Sources ===
+# Declarative loader configuration. Order matters — later sources override earlier.
+# With this, you don't need to pass loaders= to Config().
+sources:
+  - type: yaml
+    path: config/base.yaml
+
+  - type: yaml
+    path: config/${APP_ENV}.yaml     # ${VAR} expanded from environment
+    optional: true                    # Don't error if file missing
+
+  - type: json
+    path: config/overrides.json
+    optional: true
+
+  # - type: toml
+  #   path: config/app.toml
+
+  # - type: ini
+  #   path: config/legacy.ini
+
+  # - type: env_file
+  #   path: .env
+
+  - type: environment
+    prefix: MYAPP
+    separator: "__"                   # MYAPP_DATABASE__HOST → database.host
+
+  # - type: ssm
+  #   path_prefix: /myapp/production/
+  #   decrypt: true
+  #   region: us-east-1
+
+  # - type: http
+  #   url: https://config-server.example.com/config.yaml
+  #   timeout: 10
+  #   headers:
+  #     X-API-Key: ${CONFIG_API_KEY}
+
+  # - type: s3
+  #   url: s3://my-bucket/config.yaml
+  #   region: us-east-1
+
+  # - type: git
+  #   repo: https://github.com/org/configs
+  #   file_path: production.yaml
+  #   branch: main
+  #   token: ${GIT_TOKEN}
+
+  # - type: custom
+  #   class: my_plugins.consul_loader:ConsulLoader
+  #   args:
+  #     endpoint: http://consul:8500
+
+# === Secrets ===
+# Declarative secret store. With this, you don't need to pass secret_resolver=.
+# secrets:
+#   provider: aws_secrets_manager
+#   region: us-east-1
+#
+#   # --- OR: HashiCorp Vault ---
+#   # provider: vault
+#   # url: https://vault.example.com
+#   # auth:
+#   #   method: oidc
+#   #   role: myapp-role
+#   #   use_kerberos: true
+#   # mount_point: secret
+#   # kv_version: 2
+#
+#   # --- OR: Multi-Store (fallback chain) ---
+#   # provider: multi
+#   # stores:
+#   #   - provider: env
+#   #   - provider: aws_secrets_manager
+#   #     region: us-east-1
+#
+#   # Resolver settings
+#   cache_enabled: true
+#   cache_ttl: 300
+#   fail_on_missing: true
+#   prefix: prod/
+
+# === Merging ===
+deep_merge: true
+merge_strategy: merge                # merge | replace | append | prepend
+merge_strategy_map:
+  feature_flags: replace
+
+# === Validation ===
+validate_on_load: false
+strict_validation: false
+# schema_path: schemas/config.json  # Path to JSON Schema file
+
+# === Hooks ===
+use_env_expander: true
+use_type_casting: true
+
+# === Environment Variable Fallback ===
+env_prefix: MYAPP
+sysenv_fallback: false
+
+# === Reloading ===
+dynamic_reloading: false
+incremental_reload: true
+
+# === Behavior ===
+freeze_on_load: false                # Freeze after loading (immutable)
+on_error: raise                      # raise | warn | ignore
+
+# === Observability ===
+enable_observability: false
+enable_events: false
+max_reload_durations: 1000
+
+# === Versioning ===
+enable_versioning: false
+version_storage_path: .confii/versions
+max_versions: 100
+
+# === IDE Support ===
+enable_ide_support: false
+ide_stub_path: .confii/stubs.pyi
+
+# === Debug ===
+debug_mode: false
+log_level: WARNING
