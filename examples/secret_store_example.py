@@ -58,9 +58,12 @@ default:
             secret_resolver=SecretResolver(secrets),
         )
 
-        print(f"Database password: {config.database.password}")
-        print(f"API key: {config.api.key}")
-        print(f"Redis URL: {config.redis.url}")
+        assert config.database.password == "dev-password-123"
+        assert config.api.key == "dev-api-key-abc123"
+        assert "redis-dev-password" in config.redis.url
+        print("  database.password resolved ✓")
+        print("  api.key resolved ✓")
+        print("  redis.url interpolated ✓")
         print("\n✓ Secrets resolved successfully from DictSecretStore")
 
     finally:
@@ -106,8 +109,10 @@ default:
             secret_resolver=SecretResolver(store),
         )
 
-        print(f"Database password from env: {config.database.password}")
-        print(f"API key from env: {config.api.key}")
+        assert config.database.password == "env-password-456"
+        assert config.api.key == "env-api-key-xyz789"
+        print("  database.password resolved ✓")
+        print("  api.key resolved ✓")
         print("\n✓ Secrets resolved from environment variables")
 
     finally:
@@ -174,9 +179,12 @@ default:
             secret_resolver=SecretResolver(multi_store),
         )
 
-        print(f"Primary secret (from app_secrets): {config.primary_secret}")
-        print(f"Override secret (from local_overrides): {config.override_secret}")
-        print(f"Fallback secret (from env): {config.fallback_secret}")
+        assert config.primary_secret == "primary-value"
+        assert config.override_secret == "local-override-value"
+        assert config.fallback_secret == "from-environment"
+        print("  primary_secret from app_secrets ✓")
+        print("  override_secret from local_overrides ✓")
+        print("  fallback_secret from env ✓")
         print("\n✓ Multi-store fallback hierarchy working correctly")
 
     finally:
@@ -231,7 +239,8 @@ default:
         print(f"DB Host: {config.database.host}")
         print(f"DB Port: {config.database.port}")
         print(f"DB User: {config.database.user}")
-        print(f"DB Password: {config.database.password}")
+        assert config.database.password == "super-secret-pass"
+        print("  database.password resolved ✓")
         print("\n✓ JSON path extraction working correctly")
 
     finally:
@@ -280,7 +289,8 @@ default:
             secret_resolver=prod_resolver,
         )
 
-        print(f"API Key (production): {config.api.key}")
+        assert config.api.key == "prod-key-789"
+        print("  api.key (production) resolved ✓")
         print("\n✓ Environment-prefixed secrets resolved correctly")
 
     finally:
@@ -462,9 +472,12 @@ default:
                 secret_resolver=SecretResolver(store),
             )
 
-            print(f"API Key: {config.api.key}")
-            print(f"Database Password: {config.database.password}")
-            print(f"Available secrets: {store.list_secrets()}")
+            assert config.api.key == "custom-api-key-123"
+            assert config.database.password == "custom-db-password"
+            assert len(store.list_secrets()) == 2
+            print("  api.key resolved ✓")
+            print("  database.password resolved ✓")
+            print(f"  {len(store.list_secrets())} secrets available ✓")
             print("\n✓ Custom secret store working correctly")
 
         finally:

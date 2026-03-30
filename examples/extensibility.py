@@ -76,7 +76,8 @@ def example_key_hook():
         config.register_key_hook("database.password", lambda _v: "****")
 
         print(f"  database.host     -> {config.get('database.host')}")
-        print(f"  database.password -> {config.get('database.password')}")
+        assert config.get("database.password") == "****"
+        print("  database.password -> masked by hook ✓")
     finally:
         os.unlink(config_file)
 

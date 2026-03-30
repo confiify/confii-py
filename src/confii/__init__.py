@@ -17,8 +17,8 @@ from confii.exceptions import (
     ConfigLoadError,
     ConfigMergeConflictError,
     ConfigNotFoundError,
-    ConfiiError,
     ConfigValidationError,
+    ConfiiError,
 )
 
 # Async support (optional)
@@ -47,8 +47,8 @@ __all__ = [
     "ConfigLoadError",
     "ConfigMergeConflictError",
     "ConfigNotFoundError",
-    "ConfiiError",
     "ConfigValidationError",
+    "ConfiiError",
     "builder",
     "setup_logging",
 ]

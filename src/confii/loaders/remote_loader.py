@@ -389,15 +389,23 @@ class GitLoader(RemoteLoader):
             >>> loader = GitLoader("https://github.com/org/repo", "config.yaml")
             >>> config = loader.load()
         """
+        # Parse URL to determine provider safely
+        parsed = urlparse(self.url)
+        host = (parsed.hostname or "").lower()
+
         # Convert to raw URL based on provider
-        if "github.com" in self.url:
+        if host == "github.com" or host.endswith(".github.com"):
             # GitHub raw URL format
-            parts = self.url.replace("https://github.com/", "").split("/")
-            repo = parts[1].removesuffix(".git") if len(parts) > 1 else parts[0]
-            raw_url = f"https://raw.githubusercontent.com/{parts[0]}/{repo}/{self.branch}/{self.file_path}"
-        elif "gitlab.com" in self.url:
+            path = parsed.path.lstrip("/")
+            parts = path.split("/")
+            if len(parts) < 2:
+                raise ValueError(f"Invalid GitHub repository URL: {self.url}")
+            owner = parts[0]
+            repo = parts[1].removesuffix(".git")
+            raw_url = f"https://raw.githubusercontent.com/{owner}/{repo}/{self.branch}/{self.file_path}"
+        elif host == "gitlab.com" or host.endswith(".gitlab.com"):
             # GitLab raw URL format — handle subgroups by joining all path parts
-            path = self.url.replace("https://gitlab.com/", "").removesuffix(".git")
+            path = parsed.path.lstrip("/").removesuffix(".git")
             raw_url = f"https://gitlab.com/{path}/-/raw/{self.branch}/{self.file_path}"
         else:
             raise ValueError(f"Unsupported Git provider: {self.url}")
@@ -405,7 +413,7 @@ class GitLoader(RemoteLoader):
         # Use HTTP loader to fetch the raw file
         headers = {}
         if self.token:
-            if "gitlab.com" in self.url:
+            if host == "gitlab.com" or host.endswith(".gitlab.com"):
                 headers["PRIVATE-TOKEN"] = self.token
             else:
                 headers["Authorization"] = f"token {self.token}"
