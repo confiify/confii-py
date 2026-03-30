@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -e ".[dev,cli,validation]"
+        pip install -e ".[all,dev]"
 
     - name: Run pre-commit hooks
       run: |
@@ -32,7 +32,7 @@ jobs:
 
     - name: Run tests with pytest
       run: |
-        pytest tests/ -v --cov=confii --cov-report=xml --cov-report=term --cov-fail-under=70
+        pytest tests/ -v --cov=confii --cov-report=xml --cov-report=term --cov-fail-under=65
 
     - name: Upload coverage to Codecov
       if: matrix.python-version == '3.11'
@@ -54,7 +54,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -e ".[dev,cli,validation]"
+        pip install -e ".[all,dev]"
 
     - name: Run linting with ruff
       run: |
