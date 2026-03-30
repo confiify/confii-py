@@ -28,6 +28,11 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.ifconfig",
     "sphinx.ext.githubpages",
+    "sphinx.ext.todo",
+    "sphinx_copybutton",
+    "sphinx_design",
+    "myst_parser",
+    "notfound.extension",
 ]
 
 # Napoleon settings for Google-style docstrings
@@ -61,7 +66,10 @@ autosummary_generate = True
 templates_path = ["_templates"]
 
 # The suffix(es) of source filenames.
-source_suffix = ".rst"
+source_suffix = {
+    ".rst": "restructuredtext",
+    ".md": "markdown",
+}
 
 # The master toctree document.
 master_doc = "index"
@@ -131,3 +139,31 @@ intersphinx_mapping = {
 
 # Mock imports for optional dependencies
 autodoc_mock_imports = ["boto3", "hvac", "azure", "google", "watchdog"]
+
+# -- MyST Parser configuration -----------------------------------------------
+
+myst_enable_extensions = [
+    "colon_fence",  # ::: directive syntax
+    "deflist",  # definition lists
+    "fieldlist",  # field lists
+    "tasklist",  # - [x] checkboxes
+    "substitution",  # {{ variable }} substitution
+]
+myst_heading_anchors = 3  # auto-generate anchors for h1-h3
+
+# -- sphinx-copybutton configuration -----------------------------------------
+
+copybutton_prompt_text = r">>> |\.\.\. |\$ "
+copybutton_prompt_is_regexp = True
+
+# -- sphinx_design configuration ----------------------------------------------
+
+# No extra config needed — provides tabs, cards, grids, badges, dropdowns
+
+# -- todo configuration -------------------------------------------------------
+
+todo_include_todos = False  # set True to show TODOs in output
+
+# -- notfound configuration ---------------------------------------------------
+
+notfound_urls_prefix = "/confii-py/"
