@@ -17,7 +17,7 @@
 
 ## Overview
 
-**Confii** is a modern, feature-rich configuration management library designed for Python applications. It provides a unified interface for loading, merging, validating, and accessing configuration from multiple sources with enterprise-grade features like secret management, schema validation, observability, versioning, and async support.
+**Confii** is a modern, feature-rich configuration management library designed for Python applications. It provides a unified interface for loading, merging, validating, and accessing configuration from multiple sources with enterprise-grade features like secret management, schema validation, observability, versioning, and async support
 
 ### Why Confii?
 
