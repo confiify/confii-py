@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: true
@@ -28,7 +28,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -71,8 +71,8 @@ jobs:
           VERSION="${{ steps.version.outputs.version }}"
 
           git add src/confii/VERSION
-          git commit -m "chore: set version to $VERSION [skip ci]"
+          git diff --cached --quiet || git commit -m "chore: set version to $VERSION [skip ci]"
           git tag -a "$TAG_NAME" -m "Release $VERSION (auto-created from PR #${{ github.event.pull_request.number }})"
           git push origin HEAD:main "$TAG_NAME"
 
-          echo "Committed version $VERSION, created and pushed tag: $TAG_NAME"
+          echo "Created and pushed tag: $TAG_NAME"
