@@ -143,11 +143,11 @@ autodoc_mock_imports = ["boto3", "hvac", "azure", "google", "watchdog"]
 # -- MyST Parser configuration -----------------------------------------------
 
 myst_enable_extensions = [
-    "colon_fence",       # ::: directive syntax
-    "deflist",           # definition lists
-    "fieldlist",         # field lists
-    "tasklist",          # - [x] checkboxes
-    "substitution",      # {{ variable }} substitution
+    "colon_fence",  # ::: directive syntax
+    "deflist",  # definition lists
+    "fieldlist",  # field lists
+    "tasklist",  # - [x] checkboxes
+    "substitution",  # {{ variable }} substitution
 ]
 myst_heading_anchors = 3  # auto-generate anchors for h1-h3
 
