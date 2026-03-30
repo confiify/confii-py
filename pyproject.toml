@@ -80,6 +80,7 @@ test = [
   "pytest-cov>=4.0.0",
   "pytest-mock>=3.10.0",
   "pytest-xdist>=3.0.0",
+  "toml>=0.10.0",
 ]
 docs = [
   "sphinx>=6.0.0",
