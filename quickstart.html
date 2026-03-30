@@ -6,14 +6,16 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quick Start &mdash; Confii 2026.3.30.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+  <title>Quick Start &mdash; Confii 2026.3.30.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5349f25f" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=464dce26" />
 
   
+    <link rel="shortcut icon" href="_static/confii-py-logo.png"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=7a1da2ea"></script>
+      <script src="_static/documentation_options.js?v=4de52880"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
@@ -27,12 +29,13 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search"  style="background: #2980B9" >
+        <div class="wy-side-nav-search"  style="background: #1a1a2e" >
 
           
           
-          <a href="index.html" class="icon icon-home">
-            Confii
+          <a href="index.html">
+            
+              <img src="_static/confii-py-logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -42,42 +45,213 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#what-is-confii">What is Confii?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#why-confii">Why Confii?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#use-cases">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#key-concepts">Key Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#basic-installation">Basic Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#optional-dependencies">Optional Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#individual-secret-store-dependencies">Individual Secret Store Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#verifying-installation">Verifying Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#multiple-sources">Multiple Sources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#with-secret-stores">With Secret Stores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#with-schema-validation">With Schema Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#debug-mode">Debug Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alternative-access-methods">Alternative Access Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/configuration_sources.html">Configuration Sources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/configuration_sources.html#file-loaders">File Loaders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/configuration_sources.html#environment-variables">Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/configuration_sources.html#cloud-storage">Cloud Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/configuration_sources.html#remote-urls">Remote URLs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/secret_stores.html">Secret Stores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/secret_stores.html#quick-example">Quick Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/validation.html">Schema Validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/validation.html#pydantic-validation">Pydantic Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/validation.html#json-schema-validation">JSON Schema Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/advanced_features.html">Advanced Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/advanced_features.html#configuration-versioning">Configuration Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/advanced_features.html#drift-detection">Drift Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/advanced_features.html#observability">Observability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guide/advanced_features.html#async-support">Async Support</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#core-classes">Core Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/config.html">Config Class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/config.html#confii.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/config_builder.html">ConfigBuilder</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/config_builder.html#confii.config_builder.ConfigBuilder"><code class="docutils literal notranslate"><span class="pre">ConfigBuilder</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/config_builder.html#confii.config_builder.builder"><code class="docutils literal notranslate"><span class="pre">builder()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#loaders">Loaders</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/loaders.html">Loaders</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders">Configuration Loaders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.loader">Base Loader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.yaml_loader">YAML Loader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.json_loader">JSON Loader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.toml_loader">TOML Loader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.environment_loader">Environment Loader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/loaders.html#module-confii.loaders.remote_loader">Remote Loaders</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#secret-stores">Secret Stores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/secret_stores.html">Secret Stores</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.AWSSecretsManager"><code class="docutils literal notranslate"><span class="pre">AWSSecretsManager</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.AzureKeyVault"><code class="docutils literal notranslate"><span class="pre">AzureKeyVault</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.DictSecretStore"><code class="docutils literal notranslate"><span class="pre">DictSecretStore</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.EnvSecretStore"><code class="docutils literal notranslate"><span class="pre">EnvSecretStore</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.GCPSecretManager"><code class="docutils literal notranslate"><span class="pre">GCPSecretManager</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.HashiCorpVault"><code class="docutils literal notranslate"><span class="pre">HashiCorpVault</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.MultiSecretStore"><code class="docutils literal notranslate"><span class="pre">MultiSecretStore</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.SecretResolver"><code class="docutils literal notranslate"><span class="pre">SecretResolver</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/secret_stores.html#confii.secret_stores.SecretStore"><code class="docutils literal notranslate"><span class="pre">SecretStore</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#validators">Validators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/validators.html">Validators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/validators.html#available-validators">Available Validators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/validators.html#confii.validators.PydanticValidator"><code class="docutils literal notranslate"><span class="pre">PydanticValidator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/validators.html#confii.validators.SchemaValidator"><code class="docutils literal notranslate"><span class="pre">SchemaValidator</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#advanced-features">Advanced Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/async_config.html">Async Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/async_config.html#confii.async_config.AsyncConfig"><code class="docutils literal notranslate"><span class="pre">AsyncConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/async_config.html#confii.async_config.AsyncHTTPLoader"><code class="docutils literal notranslate"><span class="pre">AsyncHTTPLoader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/async_config.html#confii.async_config.AsyncLoader"><code class="docutils literal notranslate"><span class="pre">AsyncLoader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/async_config.html#confii.async_config.AsyncYamlLoader"><code class="docutils literal notranslate"><span class="pre">AsyncYamlLoader</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/config_diff.html">Configuration Diff</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/config_diff.html#confii.config_diff.ConfigDiff"><code class="docutils literal notranslate"><span class="pre">ConfigDiff</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/config_diff.html#confii.config_diff.ConfigDiffer"><code class="docutils literal notranslate"><span class="pre">ConfigDiffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/config_diff.html#confii.config_diff.ConfigDriftDetector"><code class="docutils literal notranslate"><span class="pre">ConfigDriftDetector</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/config_diff.html#confii.config_diff.DiffType"><code class="docutils literal notranslate"><span class="pre">DiffType</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/config_versioning.html">Configuration Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/config_versioning.html#confii.config_versioning.ConfigVersion"><code class="docutils literal notranslate"><span class="pre">ConfigVersion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/config_versioning.html#confii.config_versioning.ConfigVersionManager"><code class="docutils literal notranslate"><span class="pre">ConfigVersionManager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/observability.html">Observability</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/observability.html#confii.observability.ConfigAccessMetric"><code class="docutils literal notranslate"><span class="pre">ConfigAccessMetric</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/observability.html#confii.observability.ConfigEventEmitter"><code class="docutils literal notranslate"><span class="pre">ConfigEventEmitter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/observability.html#confii.observability.ConfigMetrics"><code class="docutils literal notranslate"><span class="pre">ConfigMetrics</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/observability.html#confii.observability.ConfigObserver"><code class="docutils literal notranslate"><span class="pre">ConfigObserver</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/merge_strategies.html">Merge Strategies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/merge_strategies.html#confii.merge_strategies.AdvancedConfigMerger"><code class="docutils literal notranslate"><span class="pre">AdvancedConfigMerger</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/merge_strategies.html#confii.merge_strategies.MergeStrategy"><code class="docutils literal notranslate"><span class="pre">MergeStrategy</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#utilities">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/introspection.html">Configuration Introspection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/introspection.html#confii.config_introspection.get_all_keys"><code class="docutils literal notranslate"><span class="pre">get_all_keys()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/introspection.html#confii.config_introspection.get_nested_value"><code class="docutils literal notranslate"><span class="pre">get_nested_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/introspection.html#confii.config_introspection.get_schema_info"><code class="docutils literal notranslate"><span class="pre">get_schema_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/introspection.html#confii.config_introspection.has_key"><code class="docutils literal notranslate"><span class="pre">has_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/introspection.html#confii.config_introspection.infer_type"><code class="docutils literal notranslate"><span class="pre">infer_type()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#cli">CLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/cli.html">CLI Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#exceptions">Exceptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/exceptions.html">Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigAccessError"><code class="docutils literal notranslate"><span class="pre">ConfigAccessError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigFormatError"><code class="docutils literal notranslate"><span class="pre">ConfigFormatError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigLoadError"><code class="docutils literal notranslate"><span class="pre">ConfigLoadError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigMergeConflictError"><code class="docutils literal notranslate"><span class="pre">ConfigMergeConflictError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigNotFoundError"><code class="docutils literal notranslate"><span class="pre">ConfigNotFoundError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfigValidationError"><code class="docutils literal notranslate"><span class="pre">ConfigValidationError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/exceptions.html#confii.exceptions.ConfiiError"><code class="docutils literal notranslate"><span class="pre">ConfiiError</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#basic-examples">Basic Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#introspection-api">Introspection API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#validation-examples">Validation Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#async-support">Async Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#advanced-features">Advanced Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#secret-stores">Secret Stores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#running-examples">Running Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#quick-links">Quick Links</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #1a1a2e" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Confii</a>
       </nav>
 
       <div class="wy-nav-content">
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Quick Start</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/quickstart.rst.txt" rel="nofollow"> View page source</a>
+              <a href="https://github.com/confiify/confii-py/blob/main/docs/source/quickstart.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -90,15 +264,20 @@
 <p>This guide will help you get started with Confii in minutes.</p>
 <section id="basic-usage">
 <h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Link to this heading"></a></h2>
-<p>Load configuration from a single file:</p>
+<p>Load configuration from a file and access values as attributes:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span>
 
 <span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">)])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">host</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+
+<span class="c1"># Access values directly as nested attributes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">host</span><span class="p">)</span>       <span class="c1"># &quot;localhost&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>       <span class="c1"># 5432</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">debug</span><span class="p">)</span>           <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>            <span class="c1"># &quot;MyApp&quot;</span>
 </pre></div>
 </div>
+<p>That’s it — no <code class="docutils literal notranslate"><span class="pre">.get()</span></code> calls, no string keys, no brackets.</p>
 </section>
 <section id="multiple-sources">
 <h2>Multiple Sources<a class="headerlink" href="#multiple-sources" title="Link to this heading"></a></h2>
@@ -111,9 +290,14 @@
     <span class="n">loaders</span><span class="o">=</span><span class="p">[</span>
         <span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config/base.yaml&quot;</span><span class="p">),</span>
         <span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config/production.yaml&quot;</span><span class="p">),</span>
-        <span class="n">EnvironmentLoader</span><span class="p">(</span><span class="s2">&quot;APP&quot;</span><span class="p">),</span>  <span class="c1"># APP_* environment variables</span>
+        <span class="n">EnvironmentLoader</span><span class="p">(</span><span class="s2">&quot;APP&quot;</span><span class="p">),</span>  <span class="c1"># APP_DATABASE__HOST -&gt; database.host</span>
     <span class="p">]</span>
 <span class="p">)</span>
+
+<span class="c1"># Values are merged — access the result directly</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">host</span><span class="p">)</span>       <span class="c1"># from production.yaml</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>       <span class="c1"># from base.yaml (not overridden)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">ttl</span><span class="p">)</span>           <span class="c1"># from base.yaml</span>
 </pre></div>
 </div>
 </section>
@@ -129,7 +313,10 @@
     <span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">)],</span>
     <span class="n">secret_resolver</span><span class="o">=</span><span class="n">SecretResolver</span><span class="p">(</span><span class="n">secret_store</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="c1"># Secrets in config.yaml like &quot;${secret:db/password}&quot; are automatically resolved</span>
+
+<span class="c1"># Secrets are resolved transparently — access like any other value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">password</span><span class="p">)</span>   <span class="c1"># resolved from AWS Secrets Manager</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>             <span class="c1"># resolved from &quot;${secret:api/key}&quot;</span>
 </pre></div>
 </div>
 </section>
@@ -137,6 +324,7 @@
 <h2>With Schema Validation<a class="headerlink" href="#with-schema-validation" title="Link to this heading"></a></h2>
 <p>Validate configurations with Pydantic models:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">confii</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">confii.loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">YamlLoader</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">DatabaseConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -148,14 +336,53 @@
     <span class="n">schema</span><span class="o">=</span><span class="n">DatabaseConfig</span><span class="p">,</span>
     <span class="n">validate_on_load</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
+
+<span class="c1"># Validated — attribute access is guaranteed to match the schema</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">host</span><span class="p">)</span>       <span class="c1"># guaranteed str</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>       <span class="c1"># guaranteed int</span>
+</pre></div>
+</div>
+<p>For full type safety with IDE autocomplete, use <code class="docutils literal notranslate"><span class="pre">Config[T]</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">[</span><span class="n">AppConfig</span><span class="p">](</span>
+    <span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">)],</span>
+    <span class="n">schema</span><span class="o">=</span><span class="n">AppConfig</span><span class="p">,</span>
+    <span class="n">validate_on_load</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">config</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">host</span>   <span class="c1"># IDE knows: str</span>
+<span class="n">config</span><span class="o">.</span><span class="n">typed</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">port</span>   <span class="c1"># IDE knows: int</span>
 </pre></div>
 </div>
 </section>
 <section id="debug-mode">
 <h2>Debug Mode<a class="headerlink" href="#debug-mode" title="Link to this heading"></a></h2>
-<p>Enable debug mode to track configuration sources:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">debug_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get_source</span><span class="p">(</span><span class="s2">&quot;database.host&quot;</span><span class="p">))</span>  <span class="c1"># Shows: &#39;config/base.yaml&#39;</span>
+<p>Enable debug mode to trace where each value came from:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">debug_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">loaders</span><span class="o">=</span><span class="p">[</span><span class="n">YamlLoader</span><span class="p">(</span><span class="s2">&quot;config.yaml&quot;</span><span class="p">)])</span>
+
+<span class="c1"># Use config normally</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">host</span><span class="p">)</span>
+
+<span class="c1"># Trace the source</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get_source_info</span><span class="p">(</span><span class="s2">&quot;database.host&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;From: </span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">source_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># &quot;config.yaml&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="alternative-access-methods">
+<h2>Alternative Access Methods<a class="headerlink" href="#alternative-access-methods" title="Link to this heading"></a></h2>
+<p>While attribute access is the primary way to use Confii, other methods are available:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># get() — useful when you need defaults or have dynamic keys</span>
+<span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;database.host&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+
+<span class="c1"># has() — check if a key exists</span>
+<span class="n">config</span><span class="o">.</span><span class="n">has</span><span class="p">(</span><span class="s2">&quot;database.ssl&quot;</span><span class="p">)</span>
+
+<span class="c1"># keys() — list all keys</span>
+<span class="n">config</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">config</span><span class="o">.</span><span class="n">keys</span><span class="p">(</span><span class="s2">&quot;database&quot;</span><span class="p">)</span>   <span class="c1"># keys under a prefix</span>
+
+<span class="c1"># explain() — full resolution details</span>
+<span class="n">config</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="s2">&quot;database.host&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -183,9 +410,6 @@
     <p>&#169; Copyright 2024, confiify.</p>
   </div>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
    
 
 </footer>
