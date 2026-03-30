@@ -39,6 +39,7 @@ except ImportError:
     AsyncHTTPLoader = None  # type: ignore
 
 from confii.__about__ import __version__
+
 __all__ = [
     "Config",
     "ConfigAccessError",

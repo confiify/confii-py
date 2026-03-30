@@ -75,9 +75,7 @@ def calculate_next_version() -> str:
             calver_tags.append(parsed)
 
     same_date_tags = [
-        (y, m, d, micro)
-        for y, m, d, micro in calver_tags
-        if (y, m, d) == current_date
+        (y, m, d, micro) for y, m, d, micro in calver_tags if (y, m, d) == current_date
     ]
 
     if same_date_tags:
