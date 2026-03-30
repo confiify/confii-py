@@ -29,14 +29,16 @@
 
 ### Why Confii?
 
-- 🎯 **Unified Interface** - Single API for all configuration sources
-- 🔐 **Secret Management** - Built-in support for AWS, Azure, GCP, Vault
-- ✅ **Type Safety** - Full type hints and Pydantic/JSON Schema validation
-- 🔄 **Dynamic Reloading** - Hot reload with incremental updates
-- 📊 **Observability** - Metrics, tracing, and event emission
-- 🚀 **Async Support** - Async/await API for non-blocking config loading
-- 🎨 **Developer Experience** - IDE autocomplete, debugging tools, CLI
-- 🏢 **Enterprise Ready** - Versioning, drift detection, advanced merging
+- 🎯 **Attribute-Style Access** - `config.database.host` instead of `config["database"]["host"]`
+- 🔐 **Secret Management** - `${secret:key}` resolved from AWS, Vault (9 auth methods), Azure, GCP
+- ✅ **Type Safety** - `Config[T]` generics with Pydantic for full IDE autocomplete
+- 🧩 **Config Composition** - `_include` and `_defaults` directives (Hydra-like)
+- 🔄 **Dynamic Reloading** - Hot reload with incremental updates and dry-run
+- 🪝 **Hook System** - 4 hook types to transform values on access
+- 🧊 **Freeze & Override** - Immutable configs, scoped overrides with `override()` context manager
+- 📊 **Observability** - Access metrics, event emission, change callbacks
+- 🔍 **Introspection** - `explain()`, `layers`, source tracking, drift detection
+- 🏢 **Enterprise Ready** - Versioning with rollback, 6 merge strategies, async support
 
 ---
 
@@ -92,6 +94,11 @@ config = Config(
         EnvironmentLoader("APP"),  # APP_* environment variables
     ]
 )
+
+# Access values directly as attributes
+print(config.database.host)       # from production.yaml (overrides base)
+print(config.database.port)       # from base.yaml (not overridden)
+print(config.app.debug)           # False in production
 ```
 
 ### Type-Safe Config (North Star Feature)
@@ -182,6 +189,10 @@ config = Config(
     schema=DatabaseConfig,
     validate_on_load=True
 )
+
+# Validated — safe to access directly
+print(config.database.host)     # guaranteed to be str
+print(config.database.port)     # guaranteed to be int, defaults to 5432
 ```
 
 📖 **See [examples/validation_example.py](examples/validation_example.py)**
@@ -217,26 +228,59 @@ config = Config(
 )
 
 # /myapp/production/database/host → config.database.host
-print(config.database.host)
+print(config.database.host)       # from SSM (overrides YAML)
+print(config.database.port)       # from YAML (not in SSM)
+```
+
+SSM loader handles pagination automatically (works beyond 10 parameters), decrypts SecureString values, and auto-converts types (`"5432"` → `5432`).
+
+#### Environment Variables with Nesting
+
+```python
+from confii.loaders import EnvironmentLoader
+
+# APP_DATABASE__HOST=db.example.com → config.database.host
+# APP_DATABASE__PORT=5432           → config.database.port (auto-typed to int)
+config = Config(loaders=[EnvironmentLoader("APP", separator="__")])
+
+print(config.database.host)       # "db.example.com"
+print(config.database.port)       # 5432 (int, not string)
+```
+
+#### Smart .env Loading
+
+```python
+from confii.loaders import EnvFileLoader
+
+# .env file supports dotted keys, type coercion, inline comments, and escapes
+# database.host=localhost       → nested: config.database.host
+# database.port=5432            → auto-typed: int
+# debug=true                    → auto-typed: bool
+# api.key=abc123  # my comment  → inline comment stripped
+# message="hello\nworld"        → escape sequences in double quotes
+
+config = Config(loaders=[EnvFileLoader(".env")])
+print(config.database.host)       # "localhost"
+print(config.database.port)       # 5432 (int)
+print(config.debug)               # True (bool)
 ```
 
 #### Introspection API
 
 ```python
-# List all keys
-keys = config.keys()
+# Access values directly — the primary way to use Confii
+host = config.database.host           # "db.example.com"
+port = config.database.port           # 5432
+debug = config.app.debug              # False
 
-# Check if key exists
-exists = config.has("database.host")
-
-# Get value with default
+# get() is available when you need defaults or dynamic keys
 value = config.get("database.host", "localhost")
 
-# Get schema information
-schema = config.schema("database")
-
-# Explain how a value was resolved
-info = config.explain("database.host")
+# Query and explore your configuration
+keys = config.keys()                  # all leaf keys
+exists = config.has("database.host")  # True
+schema = config.schema("database")    # type info
+info = config.explain("database.host") # source, value, override history
 ```
 
 📖 **See [examples/introspection_api.py](examples/introspection_api.py)**
@@ -248,8 +292,191 @@ info = config.explain("database.host")
 config.set("database.host", "remote.db.example.com")
 config.set("database.port", 3306)
 
-# Or via CLI
-# confii load production --override "database.host=remote.db.example.com"
+# Access the overridden values directly
+print(config.database.host)    # "remote.db.example.com"
+print(config.database.port)    # 3306
+
+# Scoped overrides — automatically restored on exit
+with config.override({"database.host": "temp.db.example.com"}):
+    print(config.database.host)  # "temp.db.example.com"
+print(config.database.host)      # back to "remote.db.example.com"
+```
+
+#### Configuration Composition
+
+Build complex configurations from reusable pieces — like Hydra, but built-in:
+
+```yaml
+# config/base.yaml
+_defaults:
+  - database: postgres
+  - cache: redis
+
+_include:
+  - config/shared.yaml
+  - config/secrets.yaml
+
+app:
+  name: MyApp
+```
+
+```python
+config = Config(loaders=[YamlLoader("config/base.yaml")])
+print(config.app.name)           # "MyApp"
+print(config.database.host)      # from included postgres defaults
+print(config.cache.ttl)          # from included redis defaults
+```
+
+Circular includes are automatically detected and prevented.
+
+#### Environment Switching
+
+Switch environments dynamically without code changes:
+
+```python
+# Read environment name from an OS variable
+config = Config(
+    env_switcher="APP_ENV",       # reads os.environ["APP_ENV"]
+    loaders=[YamlLoader("config.yaml")],
+)
+
+# config.yaml has default:, production:, staging: sections
+# The right one is selected automatically based on APP_ENV
+print(config.database.host)       # from the active environment
+```
+
+```bash
+APP_ENV=production python app.py  # uses production section
+APP_ENV=staging python app.py     # uses staging section
+```
+
+#### System Environment Fallback
+
+Missing a config key? Confii can fall back to OS environment variables:
+
+```python
+config = Config(
+    loaders=[YamlLoader("config.yaml")],
+    sysenv_fallback=True,
+    env_prefix="MYAPP",
+)
+
+# If database.host is not in config.yaml, Confii checks MYAPP_DATABASE_HOST
+print(config.database.host)       # from file or env var — transparent
+```
+
+#### Hook System
+
+Transform values on access with 4 types of hooks:
+
+```python
+config = Config(loaders=[YamlLoader("config.yaml")])
+
+# Key hook — transform specific keys
+config.register_key_hook("database.password", lambda v: decrypt(v))
+
+# Value hook — transform specific values
+config.register_value_hook("PLACEHOLDER", lambda v: os.environ.get("REAL_VALUE"))
+
+# Condition hook — transform values matching a condition
+config.register_condition_hook(
+    lambda key, value: key.endswith("_url"),
+    lambda value: value.rstrip("/")
+)
+
+# Global hook — applied to every value
+config.register_global_hook(lambda key, value: value.strip() if isinstance(value, str) else value)
+
+# Hooks fire automatically on attribute access
+print(config.database.password)   # decrypted via key hook
+print(config.api.base_url)        # trailing slash stripped via condition hook
+```
+
+#### Freeze for Production Safety
+
+Make your config immutable after loading — no accidental mutations:
+
+```python
+config = Config(
+    loaders=[YamlLoader("config.yaml")],
+    freeze_on_load=True,          # immutable from the start
+)
+
+print(config.database.host)       # reads work
+config.set("database.host", "x") # raises ConfiiError!
+config.reload()                   # raises ConfiiError!
+
+# Or freeze manually after setup
+config = Config(loaders=[YamlLoader("config.yaml")])
+config.set("debug", True)        # mutation allowed
+config.freeze()                   # lock it down
+config.set("debug", False)       # raises ConfiiError!
+```
+
+#### Dry-Run Reload
+
+Validate a reload before applying it:
+
+```python
+# Test what would change without actually changing anything
+config.reload(dry_run=True)       # validates — no side effects
+
+# Incremental reload — only re-reads changed files
+config.reload(incremental=True)   # fast for large configs
+```
+
+#### Change Callbacks
+
+React when configuration values change:
+
+```python
+@config.on_change
+def handle_change(old_config, new_config):
+    if old_config.get("database.host") != new_config.get("database.host"):
+        reconnect_database()
+
+config.reload()  # triggers callback if values changed
+```
+
+#### Self-Configuration
+
+Configure Confii itself from a file — no code needed for defaults:
+
+```yaml
+# confii.yaml (or .confii.yaml, confii.json, confii.toml)
+default_environment: production
+default_files:
+  - config.yaml
+  - config.local.yaml
+dynamic_reloading: false
+deep_merge: true
+use_type_casting: true
+```
+
+```toml
+# Or in pyproject.toml
+[tool.confii]
+default_environment = "production"
+deep_merge = true
+use_type_casting = true
+```
+
+```python
+# Config picks up settings automatically — no kwargs needed
+config = Config(loaders=[YamlLoader("config.yaml")])
+```
+
+#### Generate Documentation
+
+Auto-generate a configuration reference from your live config:
+
+```python
+# Markdown documentation of all config keys
+docs = config.generate_docs("markdown")
+print(docs)  # | Key | Value | Type | Source |
+
+# JSON format for tooling
+docs = config.generate_docs("json")
 ```
 
 ### 🔐 Secret Store Integration
@@ -398,23 +625,6 @@ merger.set_strategy("app.debug", MergeStrategy.REPLACE)  # Replace specific key
 result = merger.merge(base_config, override_config)
 ```
 
-#### Configuration Composition
-
-```yaml
-# config/base.yaml
-_defaults:
-  - database: postgres
-  - cache: redis
-
-_include:
-  - config/shared.yaml
-  - config/features.yaml
-
-app:
-  name: MyApp
-  version: 1.0.0
-```
-
 📖 **See [examples/advanced_features.py](examples/advanced_features.py)**
 
 ### 🛠️ Developer Experience
@@ -422,19 +632,19 @@ app:
 #### Debug Mode & Source Tracking
 
 ```python
-config = Config(debug_mode=True)
+config = Config(debug_mode=True, loaders=[YamlLoader("config.yaml")])
 
-# Find where a value came from
-source = config.get_source("database.port")
-print(f"database.port loaded from: {source}")
+# Use config normally — attribute access works the same
+print(config.database.host)       # "db.example.com"
+print(config.database.port)       # 5432
 
-# Get detailed information
+# But now you can also trace where each value came from
 info = config.get_source_info("database.port")
-print(f"Value: {info.value}")
-print(f"Source: {info.source_file}")
-print(f"Override count: {info.override_count}")
+print(f"Value: {info.value}")               # 5432
+print(f"Source: {info.source_file}")         # "config.yaml"
+print(f"Override count: {info.override_count}") # 0
 
-# Export debug report
+# Export full debug report
 config.export_debug_report("config_debug.json")
 ```
 
@@ -448,7 +658,9 @@ config = Config(
     ide_stub_path=".confii/stubs.pyi"
 )
 
-# Your IDE will now provide autocomplete for config keys!
+# Your IDE now autocompletes attribute access!
+config.database.host    # IDE suggests: host, port, ssl, password
+config.app.debug        # IDE knows this exists
 ```
 
 #### ConfigBuilder Pattern
@@ -463,6 +675,10 @@ config = (ConfigBuilder()
     .enable_deep_merge()
     .with_schema(AppConfig, validate_on_load=True)
     .build())
+
+# Same attribute-style access
+print(config.database.host)
+print(config.app.debug)
 ```
 
 ---

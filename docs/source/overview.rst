@@ -12,20 +12,30 @@ Why Confii?
 -----------------
 
 Traditional configuration management in Python often involves:
-- Manual loading from multiple sources
-- Custom validation logic
-- No type safety or IDE support
-- Difficult debugging of configuration sources
+- Manual loading and merging from multiple sources
+- String-key dictionaries with no IDE support (``config["database"]["host"]``)
+- Custom validation logic scattered across the codebase
+- No way to trace where a value came from
 - No built-in secret management
 
-Confii solves these problems by providing:
+Confii solves these problems. Load from any source, access as attributes:
 
-* **Unified Interface** - Single API for all configuration sources
-* **Type Safety** - Full type hints and validation with Pydantic/JSON Schema
-* **Secret Management** - Built-in integration with major secret stores
-* **Developer Experience** - IDE autocomplete, source tracking, debugging tools
+.. code-block:: python
+
+   config = Config(loaders=[YamlLoader("config.yaml")])
+   config.database.host    # "db.example.com"
+   config.database.port    # 5432
+   config.app.debug        # False
+
+Key capabilities:
+
+* **Attribute-Style Access** - ``config.database.host`` instead of ``config["database"]["host"]``
+* **Type Safety** - ``Config[T]`` with Pydantic models gives full IDE autocomplete
+* **Secret Management** - ``${secret:key}`` resolved from AWS, Vault, Azure, GCP
+* **Source Tracking** - Know exactly where every value came from
+* **Developer Experience** - IDE autocomplete, debugging tools, introspection API
 * **Production Ready** - Observability, versioning, drift detection
-* **Async Support** - First-class async/await support
+* **Async Support** - First-class async/await API
 
 Use Cases
 ---------

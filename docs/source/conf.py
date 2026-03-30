@@ -20,13 +20,12 @@ release = __version__
 
 # -- General configuration ---------------------------------------------------
 
-# Add any Sphinx extension module names here, as strings.
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
     "sphinx.ext.viewcode",
     "sphinx.ext.intersphinx",
-    "sphinx.ext.napoleon",  # For Google-style docstrings
+    "sphinx.ext.napoleon",
     "sphinx.ext.ifconfig",
     "sphinx.ext.githubpages",
 ]
@@ -75,37 +74,50 @@ language = "en"
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = "sphinx"
+pygments_style = "monokai"
 
 # -- Options for HTML output -------------------------------------------------
 
-# The theme to use for HTML and HTML Help pages.
 html_theme = "sphinx_rtd_theme"
 
-# Theme options are theme-specific and customize the look and feel of a theme.
+# Logo
+html_logo = "_static/confii-py-logo.png"
+html_favicon = "_static/confii-py-logo.png"
+
 html_theme_options = {
-    "analytics_id": "",
-    "logo_only": False,
+    "logo_only": True,
+    "display_version": True,
     "prev_next_buttons_location": "bottom",
-    "style_external_links": False,
-    "vcs_pageview_mode": "",
-    "style_nav_header_background": "#2980B9",
-    # Toc options
-    "collapse_navigation": True,
+    "style_external_links": True,
+    "style_nav_header_background": "#1a1a2e",
+    "collapse_navigation": False,
     "sticky_navigation": True,
     "navigation_depth": 4,
     "includehidden": True,
     "titles_only": False,
 }
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 
-# Custom sidebar templates, must be a dictionary that maps document names
-# to template names.
+html_context = {
+    "display_github": True,
+    "github_user": "confiify",
+    "github_repo": "confii-py",
+    "github_version": "main",
+    "conf_py_path": "/docs/source/",
+}
+
 html_sidebars = {}
+
+html_show_sourcelink = True
+html_show_sphinx = False
+html_show_copyright = True
+
+# -- Custom CSS --------------------------------------------------------------
+
+html_css_files = [
+    "custom.css",
+]
 
 # -- Intersphinx configuration -----------------------------------------------
 

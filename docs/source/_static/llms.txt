@@ -1,0 +1,458 @@
+# Confii
+
+> Configuration management library for Python. Load, merge, validate, resolve secrets, track sources, detect drift, version, and rollback — from any source.
+
+Confii provides a unified interface for loading configuration from YAML, JSON, TOML, INI, .env files, environment variables, HTTP endpoints, and cloud stores (AWS S3, SSM, Azure Blob, GCS, IBM COS, Git). It supports deep merging, secret placeholder resolution, Pydantic/JSON Schema validation, source tracking, and type-safe access via generics.
+
+## Key Facts
+
+- Language: Python
+- Package: confii (`pip install confii`)
+- License: MIT
+- Minimum Python version: 3.9+
+- Repository: https://github.com/confiify/confii-py
+- Documentation: https://confiify.github.io/confii-py/
+- PyPI: https://pypi.org/project/confii/
+- Versioning: CalVer (YYYY.MM.DD.MICRO)
+
+## What Makes Confii Different
+
+- Attribute-style access: `config.database.host` instead of `config["database"]["host"]` — nested to any depth
+- Type-safe generics: `Config[T]` with `config.typed` returning a validated Pydantic model with IDE autocomplete
+- `override()` context manager: scoped temporary overrides that auto-restore on exit, even on exceptions
+- `freeze()` / `freeze_on_load`: make config immutable for production safety — blocks `set()` and `reload()`
+- Config composition via `_include` and `_defaults` directives in YAML with cycle detection (Hydra-like)
+- `env_switcher`: read environment name from an OS variable (`APP_ENV=production`) — no code changes to switch environments
+- `sysenv_fallback`: missing config keys automatically fall back to OS environment variables with prefix mapping
+- 4-type hook system via `HookProcessor`: key hooks, value hooks, condition hooks, global hooks — transform values on every access
+- `${secret:key}` and `${secret:key:json_path}` placeholder resolution from AWS Secrets Manager, HashiCorp Vault (9 auth methods: OIDC, LDAP, JWT, Kubernetes, AWS, Azure, GCP, AppRole, Token), Azure Key Vault, GCP Secret Manager — with caching and multi-store fallback via `MultiSecretStore`
+- 6 merge strategies (replace, merge, append, prepend, intersection, union) via `AdvancedConfigMerger` with per-path `set_strategy()` overrides
+- Full introspection: `explain()`, `layers`, `schema()`, `get_source_info()`, `get_override_history()`, `get_conflicts()`, `find_keys_from_source()`
+- `dry_run` reload: validate a reload before applying it; incremental reload for only changed files
+- `on_change()` callbacks: react when configuration values change during reload
+- Config diff via `ConfigDiffer.diff()` and drift detection via `ConfigDriftDetector`
+- Config versioning with `save_version()`, `rollback_to_version()`, `list_versions()`, stored as JSON on disk
+- File watching via watchdog with incremental reload, `on_change()` callbacks
+- Observability via `ConfigObserver` (access metrics per key) and `ConfigEventEmitter` (event callbacks for reload, change)
+- Self-configuration from `confii.yaml` / `.confii.yaml` / `pyproject.toml [tool.confii]` — zero-code defaults
+- `generate_docs("markdown")` / `generate_docs("json")` — auto-generate config documentation from live config
+- Smart .env loading: dotted keys become nested dicts, auto type coercion, inline comments, escape sequences
+- SSM loader: automatic pagination, SecureString decryption, type coercion
+- Environment variable nesting: `APP_DATABASE__HOST` → `config.database.host` with configurable separator
+- `ConfigBuilder` fluent API for construction
+- `override()` context manager for scoped temporary overrides (restores on exit, even on exceptions)
+- `freeze()` to make config immutable after loading
+- Debug mode with `export_debug_report()` and `print_debug_info()`
+- CLI tool with 10+ commands: load, get, validate, export, debug, explain, diff, lint, migrate, docs, examples
+
+## Installation
+
+```bash
+pip install confii
+
+# Optional extras
+pip install confii[watch]         # watchdog for dynamic reloading
+pip install confii[cli]           # click-based CLI tool
+pip install confii[validation]    # pydantic + jsonschema
+pip install confii[cloud]         # boto3, azure-storage-blob, google-cloud-storage, ibm-cos-sdk
+pip install confii[secrets]       # boto3, hvac, azure-keyvault-secrets, google-cloud-secret-manager
+pip install confii[all]           # everything
+```
+
+## Quick Start
+
+### Basic usage
+
+```python
+from confii import Config
+from confii.loaders import YamlLoader
+
+config = Config(loaders=[YamlLoader("config.yaml")])
+
+# Attribute-style access — nested keys become chained attributes
+print(config.database.host)       # "localhost"
+print(config.database.port)       # 5432
+print(config.app.debug)           # False
+
+# Also available via get() with dot-notation and defaults
+print(config.get("database.port", 5432))
+```
+
+### Multiple sources with environment
+
+```python
+from confii import Config
+from confii.loaders import YamlLoader, EnvironmentLoader
+
+config = Config(
+    env="production",
+    loaders=[
+        YamlLoader("config/base.yaml"),
+        YamlLoader("config/production.yaml"),
+        EnvironmentLoader("APP"),   # APP_DATABASE__HOST -> database.host
+    ],
+)
+```
+
+### Type-safe access with Pydantic
+
+```python
+from pydantic import BaseModel
+from confii import Config
+from confii.loaders import YamlLoader
+
+class DatabaseConfig(BaseModel):
+    host: str
+    port: int = 5432
+    ssl: bool = False
+
+class AppConfig(BaseModel):
+    database: DatabaseConfig
+    debug: bool = False
+
+config = Config[AppConfig](
+    loaders=[YamlLoader("config.yaml")],
+    schema=AppConfig,
+    validate_on_load=True,
+)
+
+config.typed.database.host   # IDE knows: str
+config.typed.database.port   # IDE knows: int
+```
+
+### Secret resolution
+
+```python
+from confii import Config
+from confii.loaders import YamlLoader
+from confii.secret_stores import AWSSecretsManager, SecretResolver
+
+store = AWSSecretsManager(region_name="us-east-1")
+config = Config(
+    loaders=[YamlLoader("config.yaml")],
+    secret_resolver=SecretResolver(store),
+)
+# config.yaml: password: "${secret:prod/db/password}"
+# config.yaml: api_key: "${secret:prod/api-config:api_key}"  # JSON path extraction
+```
+
+### Builder pattern
+
+```python
+from confii import ConfigBuilder
+from confii.loaders import YamlLoader
+
+config = (ConfigBuilder()
+    .with_env("production")
+    .add_loader(YamlLoader("config.yaml"))
+    .enable_deep_merge()
+    .with_schema(AppConfig, validate_on_load=True)
+    .build())
+```
+
+## Configuration Sources
+
+| Source | Class | Extra |
+| --- | --- | --- |
+| YAML | `YamlLoader(path)` | — |
+| JSON | `JsonLoader(path)` | — |
+| TOML | `TomlLoader(path)` | — |
+| INI | `IniLoader(path)` | — |
+| .env file | `EnvFileLoader(path)` | — |
+| Environment vars | `EnvironmentLoader(prefix, separator="__")` | — |
+| HTTP/HTTPS | `HTTPLoader(url, headers=None, auth=None)` | — |
+| AWS S3 | `S3Loader(bucket, key, region_name=None)` | cloud |
+| AWS SSM | `SSMLoader(prefix, decrypt=True, region_name=None)` | cloud |
+| Azure Blob | `AzureBlobLoader(account_name, container, blob)` | cloud |
+| GCS | `GCPStorageLoader(bucket, object_name, project=None)` | cloud |
+| IBM COS | `IBMCloudObjectStorageLoader(bucket, key, ...)` | cloud |
+| Git repo | `GitLoader(url, file_path, branch="main", token=None)` | — |
+
+All loaders inherit from `Loader` base class with a `load() -> Optional[Dict[str, Any]]` method.
+
+## Config Constructor Parameters
+
+```python
+Config(
+    env=None,                    # environment name ("production", "staging")
+    env_switcher=None,           # OS env var to read environment from
+    loaders=None,                # list of Loader instances
+    dynamic_reloading=None,      # enable watchdog file watching
+    use_env_expander=None,       # expand ${VAR} in values
+    use_type_casting=None,       # auto-convert "123" -> 123
+    enable_ide_support=None,     # generate .pyi stubs
+    debug_mode=None,             # track source info per key
+    deep_merge=None,             # recursive dict merge (default: True)
+    merge_strategy=None,         # default MergeStrategy
+    merge_strategy_map=None,     # per-path strategy overrides
+    env_prefix=None,             # auto-add EnvironmentLoader with prefix
+    sysenv_fallback=None,        # fall back to OS env vars on missing keys
+    secret_resolver=None,        # SecretResolver instance
+    schema=None,                 # Pydantic model or JSON Schema dict
+    validate_on_load=None,       # validate immediately after loading
+    strict_validation=None,      # treat warnings as errors
+    freeze_on_load=None,         # freeze after loading
+    on_error=None,               # error policy
+)
+```
+
+## Config Methods
+
+### Access
+
+```python
+config.database.host                      # attribute-style nested access (primary way)
+config.database.port                      # returns native types (int, str, bool, etc.)
+config.app.features.enabled               # any depth of nesting
+config.get("key.path")                    # dot-notation access with default support
+config.get("key.path", "fallback")        # with fallback value
+config.has("key.path")                    # bool
+config.keys()                             # List[str] — all leaf keys
+config.keys("database")                   # keys under prefix
+config.to_dict()                          # Dict[str, Any]
+config.typed                              # T — validated Pydantic model (Config[T] only)
+config.schema("key")                      # Dict — type info for key
+config.explain("key")                     # Dict — source, value, override info
+config.layers                             # List[Dict] — source precedence stack
+```
+
+### Mutation
+
+```python
+config.set("key.path", value)             # set or override
+config.freeze()                           # make read-only
+config.is_frozen                          # bool
+with config.override({"key": "val"}):     # scoped override, restores on exit
+    ...
+```
+
+### Lifecycle
+
+```python
+config.reload()                           # full reload from all loaders
+config.reload(incremental=True)           # only changed files
+config.reload(dry_run=True)              # validate without applying
+config.extend(loader)                     # add loader at runtime
+config.on_change(callback)               # register change callback
+config.stop_watching()                    # stop file watcher
+```
+
+### Hooks
+
+```python
+config.register_key_hook("db.password", lambda v: "****")
+config.register_value_hook("SECRET", lambda v: decrypt(v))
+config.register_condition_hook(lambda k, v: k.endswith("_url"), normalize_url)
+config.register_global_hook(lambda k, v: v)
+```
+
+### Debug (requires debug_mode=True)
+
+```python
+config.get_source_info("key")             # SourceInfo — file, line, loader
+config.get_override_history("key")        # List[SourceInfo]
+config.get_conflicts()                    # Dict[str, List[SourceInfo]]
+config.find_keys_from_source("base.yaml") # List[str]
+config.get_source_statistics()            # Dict per source
+config.print_debug_info("key")           # human-readable to stdout
+config.export_debug_report("out.json")   # full JSON
+```
+
+### Diff and Drift
+
+```python
+diffs = config.diff(other_config)         # List[ConfigDiff]
+drifts = config.detect_drift(intended)    # List[ConfigDiff]
+# ConfigDiff has: key, diff_type (added/removed/modified), old_value, new_value, path
+```
+
+### Versioning
+
+```python
+vm = config.enable_versioning()           # ConfigVersionManager
+version = config.save_version({"author": "user@example.com"})
+config.rollback_to_version(version.version_id)
+versions = vm.list_versions(limit=10)
+```
+
+### Observability
+
+```python
+observer = config.enable_observability()  # ConfigObserver — tracks access metrics
+emitter = config.enable_events()          # ConfigEventEmitter
+
+@emitter.on("reload")
+def on_reload(new_config, duration):
+    print(f"Reloaded in {duration}s")
+
+emitter.on("change", lambda old, new: print("Changed"))
+metrics = config.get_metrics()            # Dict with accessed_keys, reload_count, etc.
+```
+
+### Export
+
+```python
+config.export("json")                     # str
+config.export("yaml")                     # str
+config.export("toml")                     # str
+config.export("json", "output.json")      # write to file
+config.generate_docs("markdown")          # str — config documentation
+```
+
+## Secret Stores
+
+```python
+from confii.secret_stores import (
+    DictSecretStore,          # in-memory (dev/test)
+    EnvSecretStore,           # OS environment variables
+    MultiSecretStore,         # fallback chain
+    SecretResolver,           # resolves ${secret:...} placeholders
+)
+
+# Cloud stores (require confii[secrets])
+from confii.secret_stores import (
+    AWSSecretsManager,        # AWS Secrets Manager
+    HashiCorpVault,           # HashiCorp Vault (9 auth methods)
+    AzureKeyVault,            # Azure Key Vault
+    GCPSecretManager,         # GCP Secret Manager
+)
+
+# Multi-store with priority
+store = MultiSecretStore([
+    DictSecretStore({"key": "override"}),   # highest priority
+    AWSSecretsManager(region_name="us-east-1"),
+])
+resolver = SecretResolver(store, cache_enabled=True, prefix="prod/")
+```
+
+### Vault Authentication Methods
+
+```python
+from confii.secret_stores.vault_auth import (
+    TokenAuth, AppRoleAuth, OIDCAuth, LDAPAuth,
+    JWTAuth, KubernetesAuth, AWSAuth, AzureAuth, GCPAuth,
+)
+
+auth = OIDCAuth(role="myapp-role", use_kerberos=True)
+store = HashiCorpVault(url="https://vault.example.com", auth_method=auth)
+```
+
+## Merge Strategies
+
+```python
+from confii.merge_strategies import AdvancedConfigMerger, MergeStrategy
+
+merger = AdvancedConfigMerger(MergeStrategy.MERGE)  # default strategy
+merger.set_strategy("database", MergeStrategy.REPLACE)
+merger.set_strategy("features.flags", MergeStrategy.UNION)
+result = merger.merge(base_config, override_config)
+
+# Available: REPLACE, MERGE, APPEND, PREPEND, INTERSECTION, UNION
+```
+
+## Config Composition
+
+YAML files can use special directives:
+
+```yaml
+_defaults:
+  - database: postgres
+  - cache: redis
+
+_include:
+  - config/shared.yaml
+  - config/features.yaml
+
+app:
+  name: MyApp
+```
+
+`_include` loads and merges additional files. `_defaults` provides base values. Cycle detection prevents infinite loops.
+
+## Exceptions
+
+```python
+from confii import (
+    ConfiiError,                # base exception
+    ConfigLoadError,            # file not found, parse error
+    ConfigFormatError,          # unsupported format
+    ConfigAccessError,          # key not found
+    ConfigValidationError,      # schema validation failed
+    ConfigMergeConflictError,   # merge conflict
+    ConfigNotFoundError,        # config file not found
+)
+```
+
+## Package Structure
+
+```
+src/confii/
+    __init__.py              Top-level exports: Config, ConfigBuilder, exceptions
+    config.py                Config class — assembles all mixin capabilities
+    config_builder.py        ConfigBuilder fluent API
+    config_access.py         get(), set(), has(), keys(), explain(), diff(), override()
+    config_loading.py        reload(), extend(), register hooks, file tracking
+    config_composition.py    _include/_defaults composition with cycle detection
+    config_diff.py           ConfigDiffer, ConfigDriftDetector
+    config_versioning.py     ConfigVersionManager with disk-based snapshots
+    config_debug.py          Source tracking, debug reports
+    config_merger.py         Deep merge logic
+    merge_strategies.py      6 strategies with per-path overrides
+    environment_handler.py   Environment section resolution
+    hook_processor.py        4-type hook system (key, value, condition, global)
+    observability.py         ConfigObserver, ConfigMetrics, ConfigEventEmitter
+    exporters.py             JSON, YAML, TOML, .env export
+    async_config.py          AsyncConfig, AsyncYamlLoader, AsyncHTTPLoader
+    cli.py                   Click-based CLI (load, get, validate, export, debug, diff, ...)
+    exceptions.py            ConfiiError hierarchy
+    calver.py                CalVer version calculation from git tags
+    loaders/
+        yaml_loader.py       YamlLoader
+        json_loader.py       JsonLoader
+        toml_loader.py       TomlLoader
+        ini_loader.py        IniLoader
+        environment_loader.py EnvironmentLoader (prefix + separator nesting)
+        env_file_loader.py   EnvFileLoader (.env with dotted keys, type coercion)
+        ssm_loader.py        SSMLoader (AWS SSM Parameter Store)
+        remote_loader.py     HTTPLoader, S3Loader, AzureBlobLoader, GCPStorageLoader, IBMCOSLoader, GitLoader
+    secret_stores/
+        resolver.py          SecretResolver (${secret:...} pattern matching, caching)
+        providers/            DictSecretStore, EnvSecretStore, MultiSecretStore, AWSSecretsManager, AzureKeyVault, GCPSecretManager, HashiCorpVault
+        vault_auth/           9 auth methods: Token, AppRole, OIDC, LDAP, JWT, Kubernetes, AWS, Azure, GCP
+    validators/
+        pydantic_validator.py  Pydantic model validation with defaults
+        schema_validator.py    JSON Schema validation with defaults
+    hooks/
+        type_casting.py       Auto type conversion hook
+        env_var_expander.py   ${VAR} expansion hook
+    utils/
+        dict_utils.py         Deep merge, nested get/set
+        toml_compat.py        tomllib/tomli/toml compatibility layer
+        type_coercion.py      String to int/float/bool coercion
+```
+
+## CLI Tool
+
+```bash
+pip install confii[cli]
+
+confii load production --loader yaml:config.yaml
+confii get production database.host --loader yaml:config.yaml
+confii validate production --loader yaml:config.yaml --schema schema.json
+confii export production --loader yaml:config.yaml --format json --output out.json
+confii debug production --loader yaml:config.yaml --key database.host
+confii explain production --loader yaml:config.yaml --key database.host
+confii diff dev production --loader1 yaml:dev.yaml --loader2 yaml:prod.yaml
+confii lint production --loader yaml:config.yaml
+confii migrate dotenv .env --output config.yaml
+confii docs production --loader yaml:config.yaml --format markdown
+```
+
+## Links
+
+- Source: https://github.com/confiify/confii-py
+- Documentation: https://confiify.github.io/confii-py/
+- PyPI: https://pypi.org/project/confii/
+- Examples: https://github.com/confiify/confii-py/tree/main/examples
+- Issues: https://github.com/confiify/confii-py/issues
+- Changelog: https://github.com/confiify/confii-py/blob/main/CHANGELOG.md
