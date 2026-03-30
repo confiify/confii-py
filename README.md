@@ -1,7 +1,7 @@
 # Confii
 
 <p align="center">
-  <img src="art/confii-py.png" alt="Confii Logo" />
+  <img src="https://raw.githubusercontent.com/confiify/confii-py/main/art/confii-py.png" alt="Confii Logo" />
 </p>
 
 [![Python Version](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org)
@@ -15,7 +15,7 @@
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![Docs](https://img.shields.io/github/actions/workflow/status/confiify/confii-py/docs.yml?branch=main&label=docs)](https://confiify.github.io/confii-py/)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/confiify/confii-py/badge)](https://scorecard.dev/viewer/?uri=github.com/confiify/confii-py)
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/placeholder/badge)](https://www.bestpractices.dev/projects/placeholder)
+<!-- [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/PROJECT_ID/badge)](https://www.bestpractices.dev/projects/PROJECT_ID) -->
 
 ## A comprehensive, production-ready configuration management library for Python
 
