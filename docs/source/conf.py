@@ -1,6 +1,5 @@
 """Sphinx configuration for Confii documentation."""
 
-import os
 import sys
 from pathlib import Path
 
