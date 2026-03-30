@@ -22,9 +22,7 @@ def example_global_hook():
     print("=" * 70)
 
     with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
-        f.write(
-            "app:\n" "  name: my-application\n" "  region: us-east-1\n" "  version: 3\n"
-        )
+        f.write("app:\n  name: my-application\n  region: us-east-1\n  version: 3\n")
         config_file = f.name
 
     try:
@@ -61,9 +59,7 @@ def example_key_hook():
     print("=" * 70)
 
     with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
-        f.write(
-            "database:\n" "  host: db.example.com\n" "  password: super-secret-123\n"
-        )
+        f.write("database:\n  host: db.example.com\n  password: super-secret-123\n")
         config_file = f.name
 
     try:
@@ -94,7 +90,7 @@ def example_condition_hook():
     print("=" * 70)
 
     with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
-        f.write("greeting: Hello, ${USER_NAME}!\n" "static_value: no-variables-here\n")
+        f.write("greeting: Hello, ${USER_NAME}!\nstatic_value: no-variables-here\n")
         config_file = f.name
 
     os.environ["USER_NAME"] = "Alice"
@@ -180,9 +176,7 @@ def example_observability():
     print("=" * 70)
 
     with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
-        f.write(
-            "server:\n" "  host: 0.0.0.0\n" "  port: 8080\n" "cache:\n" "  ttl: 300\n"
-        )
+        f.write("server:\n  host: 0.0.0.0\n  port: 8080\ncache:\n  ttl: 300\n")
         config_file = f.name
 
     try:
@@ -220,7 +214,7 @@ def example_event_emission():
     print("=" * 70)
 
     with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
-        f.write("service:\n" "  name: event-demo\n" "  version: 1\n")
+        f.write("service:\n  name: event-demo\n  version: 1\n")
         config_file = f.name
 
     try:
@@ -268,10 +262,10 @@ def example_composition_include():
     main_path = os.path.join(tmpdir, "main.yaml")
 
     with open(base_path, "w") as f:
-        f.write("defaults:\n" "  timeout: 30\n" "  retries: 3\n")
+        f.write("defaults:\n  timeout: 30\n  retries: 3\n")
 
     with open(main_path, "w") as f:
-        f.write("_include:\n" "  - base.yaml\n" "app:\n" "  name: composed-app\n")
+        f.write("_include:\n  - base.yaml\napp:\n  name: composed-app\n")
 
     try:
         config = Config(

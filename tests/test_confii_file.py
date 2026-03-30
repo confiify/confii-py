@@ -133,20 +133,14 @@ class TestReadConfiiFile:
         assert result is None
 
     def test_yaml_takes_priority_over_json(self, tmp_path):
-        _write_yaml(
-            tmp_path / "confii.yaml", {"default_environment": "from-yaml"}
-        )
-        _write_json(
-            tmp_path / "confii.json", {"default_environment": "from-json"}
-        )
+        _write_yaml(tmp_path / "confii.yaml", {"default_environment": "from-yaml"})
+        _write_json(tmp_path / "confii.json", {"default_environment": "from-json"})
 
         result = read_confii_file(search_dir=str(tmp_path))
         assert result["default_environment"] == "from-yaml"
 
     def test_non_hidden_takes_priority_over_hidden(self, tmp_path):
-        _write_json(
-            tmp_path / "confii.json", {"default_environment": "non-hidden"}
-        )
+        _write_json(tmp_path / "confii.json", {"default_environment": "non-hidden"})
         _write_yaml(tmp_path / ".confii.yaml", {"default_environment": "hidden"})
 
         result = read_confii_file(search_dir=str(tmp_path))
@@ -175,9 +169,7 @@ class TestReadSelfConfig:
 
     def test_confii_file_wins_over_pyproject(self, tmp_path, monkeypatch):
         # Write both a confii.yaml and a pyproject.toml
-        _write_yaml(
-            tmp_path / "confii.yaml", {"default_environment": "from-file"}
-        )
+        _write_yaml(tmp_path / "confii.yaml", {"default_environment": "from-file"})
 
         pyproject = tmp_path / "pyproject.toml"
         pyproject.write_text(

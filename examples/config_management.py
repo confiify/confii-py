@@ -485,9 +485,7 @@ def layers_demo() -> None:
             print(f"    keys        = {layer['keys']}")
             print()
 
-        print(
-            f"Resolved app.debug = {config.app.debug}  " "(override wins over default)"
-        )
+        print(f"Resolved app.debug = {config.app.debug}  (override wins over default)")
     finally:
         shutil.rmtree(tmpdir)
 

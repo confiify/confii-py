@@ -280,7 +280,8 @@ default:
 
         # Use production secrets with prefix
         prod_resolver = SecretResolver(
-            all_secrets, prefix="prod/"  # Automatically prepends to all lookups
+            all_secrets,
+            prefix="prod/",  # Automatically prepends to all lookups
         )
 
         config = Config(
@@ -521,7 +522,7 @@ def example_secret_caching():
 
     print(f"Without cache (10 calls): {no_cache_time:.2f}s")
     print(f"With cache (10 calls): {cache_time:.2f}s")
-    print(f"Speedup: {no_cache_time/cache_time:.1f}x faster")
+    print(f"Speedup: {no_cache_time / cache_time:.1f}x faster")
 
     # Cache statistics
     stats = resolver_with_cache.cache_stats

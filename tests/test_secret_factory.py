@@ -255,9 +255,7 @@ class TestCreateSecretStore:
         assert isinstance(store, AzureKeyVault)
         assert store.vault_url == "https://my-vault.vault.azure.net"
 
-    @patch(
-        "confii.secret_stores.providers.gcp_secret_manager.GCP_AVAILABLE", True
-    )
+    @patch("confii.secret_stores.providers.gcp_secret_manager.GCP_AVAILABLE", True)
     @patch(
         "confii.secret_stores.providers.gcp_secret_manager.secretmanager",
         create=True,
