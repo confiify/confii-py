@@ -8,6 +8,14 @@
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE.txt)
 [![CI Status](https://img.shields.io/github/actions/workflow/status/confiify/confii-py/ci.yml?branch=main)](https://github.com/confiify/confii-py/actions)
 [![PyPI Version](https://img.shields.io/pypi/v/confii)](https://pypi.org/project/confii/)
+[![Downloads](https://img.shields.io/pypi/dm/confii)](https://pypi.org/project/confii/)
+[![Coverage](https://img.shields.io/codecov/c/github/confiify/confii-py)](https://codecov.io/gh/confiify/confii-py)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Typed](https://img.shields.io/badge/typed-mypy-blue)](https://mypy-lang.org/)
+[![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+[![Docs](https://img.shields.io/github/actions/workflow/status/confiify/confii-py/docs.yml?branch=main&label=docs)](https://confiify.github.io/confii-py/)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/confiify/confii-py/badge)](https://scorecard.dev/viewer/?uri=github.com/confiify/confii-py)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/placeholder/badge)](https://www.bestpractices.dev/projects/placeholder)
 
 ## A comprehensive, production-ready configuration management library for Python
 
@@ -17,7 +25,7 @@
 
 ## Overview
 
-**Confii** is a modern, feature-rich configuration management library designed for Python applications. It provides a unified interface for loading, merging, validating, and accessing configuration from multiple sources with enterprise-grade features like secret management, schema validation, observability, versioning, and async support
+**Confii** is a modern, feature-rich configuration management library designed for Python applications. It provides a unified interface for loading, merging, validating, and accessing configuration from multiple sources with enterprise-grade features like secret management, schema validation, observability, versioning, and async support.
 
 ### Why Confii?
 

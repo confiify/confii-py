@@ -8,7 +8,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "confii"
-version = "0.0.1"
+dynamic = ["version"]
 description = "A flexible configuration management library for Python applications"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -80,6 +80,7 @@ test = [
   "pytest-cov>=4.0.0",
   "pytest-mock>=3.10.0",
   "pytest-xdist>=3.0.0",
+  "toml>=0.10.0",
 ]
 docs = [
   "sphinx>=6.0.0",
@@ -92,6 +93,7 @@ dev = [
   "mypy>=1.0.0",
   "pre-commit>=3.0.0",
   "types-PyYAML>=6.0.0",
+  "types-toml>=0.10.0",
   "bandit>=1.7.0",
   "radon>=6.0.0",
   "ipython>=8.0.0",
@@ -113,6 +115,9 @@ confii = "confii.cli:cli"
 # =============================================================================
 # Hatch build configuration
 # =============================================================================
+
+[tool.hatch.version]
+path = "src/confii/VERSION"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/confii"]
@@ -183,7 +188,7 @@ ignore = [
   "SIM102", "SIM112", "SIM115", "SIM117", "SIM118",  # style flexibility in tests
   "RUF012", "RUF015", "RUF059",  # test-specific patterns
 ]
-"examples/**" = ["F401", "E402"]
+"examples/**" = ["F401", "E402", "SIM115"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["confii"]

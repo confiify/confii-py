@@ -1,0 +1,67 @@
+name: Release to PyPI
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_run:
+    workflows: ["Auto-create Release Tag"]
+    types:
+      - completed
+
+jobs:
+  release:
+    # Only run if triggered by tag push, or if auto-tag workflow succeeded
+    if: github.event_name == 'push' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify CalVer tag
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/v}
+          else
+            git fetch --tags --force
+            VERSION=$(git tag -l 'v*' --sort=-version:refname | head -n 1 | sed 's/^v//')
+          fi
+          if ! [[ "$VERSION" =~ ^[0-9]{4}\.[0-9]{2}\.[0-9]{2}\.[0-9]+$ ]]; then
+            echo "Error: Invalid CalVer format: $VERSION"
+            exit 1
+          fi
+          echo "Building version: $VERSION"
+
+      - name: Install build tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install hatch hatchling build twine
+
+      - name: Build package
+        run: hatch build
+
+      - name: Check package
+        run: twine check dist/*
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          generate_release_notes: true
