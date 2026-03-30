@@ -86,6 +86,10 @@ docs = [
   "sphinx>=6.0.0",
   "sphinx-rtd-theme>=1.2.0",
   "sphinx-autodoc-typehints>=1.22.0",
+  "sphinx-copybutton>=0.5.0",
+  "sphinx-design>=0.5.0",
+  "myst-parser>=2.0.0",
+  "sphinx-notfound-page>=1.0.0",
 ]
 dev = [
   "confii[test,docs]",
@@ -104,7 +108,7 @@ dev = [
 # =============================================================================
 
 [project.urls]
-Documentation = "https://github.com/confiify/confii-py#readme"
+Documentation = "https://confiify.github.io/confii-py/"
 Issues = "https://github.com/confiify/confii-py/issues"
 Source = "https://github.com/confiify/confii-py"
 Changelog = "https://github.com/confiify/confii-py/blob/main/CHANGELOG.md"
