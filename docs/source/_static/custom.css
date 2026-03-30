@@ -1,0 +1,59 @@
+/* Confii docs custom styles */
+
+/* Navigation header background */
+.wy-side-nav-search {
+    background-color: #1a1a2e;
+}
+
+.wy-side-nav-search a {
+    color: #e0e0e0;
+}
+
+.wy-side-nav-search input[type="text"] {
+    border-color: #16213e;
+}
+
+/* Logo sizing */
+.wy-side-nav-search img {
+    max-width: 180px;
+    padding: 10px 0;
+}
+
+/* Code block styling */
+.highlight {
+    border-radius: 4px;
+}
+
+/* Links */
+a {
+    color: #2980b9;
+}
+
+a:hover {
+    color: #3498db;
+}
+
+/* Version badge in nav */
+.wy-side-nav-search > div.version {
+    color: #adb5bd;
+}
+
+/* Table styling */
+table.docutils {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.docutils td, table.docutils th {
+    padding: 8px 12px;
+}
+
+/* Admonition styling */
+.admonition {
+    border-radius: 4px;
+}
+
+/* Footer */
+footer {
+    font-size: 0.85em;
+}

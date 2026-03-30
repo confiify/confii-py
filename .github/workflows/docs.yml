@@ -22,6 +22,8 @@ jobs:
           pip install -e ".[docs]" 2>/dev/null || pip install -e .
       - name: Build HTML docs
         run: sphinx-build -b html docs/source docs/build/html
+      - name: Copy llms.txt to site root
+        run: cp docs/source/_static/llms.txt docs/build/html/llms.txt
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
