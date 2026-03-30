@@ -3,20 +3,25 @@
 
 Thin wrapper around confii.calver for use in CI/CD scripts
 and GitHub Actions workflows.
+
+Imports calver.py directly to avoid triggering the full confii package
+init (which requires pyyaml and other dependencies).
 """
 
 import argparse
+import importlib.util
 import sys
 from pathlib import Path
 
-# Allow importing from the package source when not installed
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+# Load calver module directly without triggering confii.__init__
+_calver_path = Path(__file__).parent.parent / "src" / "confii" / "calver.py"
+_spec = importlib.util.spec_from_file_location("calver", _calver_path)
+_calver = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_calver)
 
-from confii.calver import (
-    calculate_next_version,
-    check_pep440_compliance,
-    validate_version_format,
-)
+calculate_next_version = _calver.calculate_next_version
+validate_version_format = _calver.validate_version_format
+check_pep440_compliance = _calver.check_pep440_compliance
 
 VERSION_FILE = Path(__file__).parent.parent / "src" / "confii" / "VERSION"
 
