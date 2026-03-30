@@ -9,7 +9,9 @@ underlying library is available.
 """
 
 import sys
-from typing import Any, Dict
+from typing import Any, Dict, Type
+
+TomlDecodeError: Type[Exception]
 
 # Try stdlib first (Python 3.11+), then tomli, then legacy toml
 if sys.version_info >= (3, 11):
