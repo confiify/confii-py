@@ -33,7 +33,7 @@ hvac>=1.1.0  # HashiCorp Vault
 
 # Test utilities
 responses>=0.22.0  # For mocking HTTP requests
-freezegun>=1.2.0  # For mocking time/dates
+freezegun>=1.5.5  # For mocking time/dates
 
 # Coverage
 coverage[toml]>=7.0.0
